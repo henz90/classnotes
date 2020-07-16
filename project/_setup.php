@@ -40,7 +40,6 @@ function db_error_handler($params) {
     die;
 }
 
-
 // Create and configure Slim app
 $config = ['settings' => [
     'addContentLengthHeader' => false,

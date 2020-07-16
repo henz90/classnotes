@@ -2,11 +2,11 @@
 
 //http://ipd21.com/cpanel
 
-require_once 'setup.php';
-require_once 'main.php';
-require_once 'users.php';
-require_once 'articles.php';
-require_once 'admin.php';
+require_once '_setup.php';
+require_once '_main.php';
+require_once '_users.php';
+require_once '_articles.php';
+require_once '_admin.php';
 
 // Run app
 $app->run();
