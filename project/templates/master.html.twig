@@ -6,22 +6,25 @@
         {% block head %}{% endblock %}
     </head>
     <body>
-        <div id="centeredContent">
-        <div id="contentHeader">
-            {% if userSession %}
-                <span>You are logged in as <b>{{ userSession.name }}</b>.
-                    You can <a href="/addarticle">post a new article</a>
-                    or <a href="/logout">Logout</a>.</span>
-            {% else %}
-                <a href="/login">Login</a> or <a href="/register">Register</a>
-            {% endif %}
+        <div id="nav">
+            <img src="/images/Logo.png" id="logo" alt="Classnotes Logo" width="250" height="250">
+            <ul id="menu">
+                {% if userSession %}
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/login">Login</a></li>
+                {% endif %}
+                <li>Random Class</li>
+                <li>Random Lesson</li>
+                <li><a href="/create_class">Create Class</li>
+                <li><a href="/class_list">Join Class</li>
+            </ul>
         </div>
         {% block content %}{% endblock %}
         <div id="footer">
             {% block footer %}
-                <br>&copy; Copyright 2011 by <a href="http://domain.invalid/">you</a>.
+                <br>Developed by Norman Fong and Henry Zakay</a>.
             {% endblock %}
-        </div>
         </div>
     </body>
 </html>
