@@ -10,3 +10,6 @@ YYYY/MM/DD  - NAME
 3.	Unsure
 
 2020/07/20 - NORMAN
+1.  FIRST SCRUM
+2.  Start TRELLO board
+3.  I'll find out
