@@ -10,22 +10,15 @@ $app->get('/internalerror', function ($request, $response, $args) {
     //  MAINPAGE
 $app->get('/', function ($request, $response, $args) {
     return $response->write("This is Index");
-    /*  //  FIX ME
-    $articleList = DB::query("SELECT a.id, a.authorId, a.creationTS, a.title, a.body, a.photofilepath, u.name "
-        . "FROM articles as a, users as u WHERE a.authorId = u.id ORDER BY a.id DESC");
-    foreach ($articleList as &$article) {
+    $classesList = DB::query("SELECT c.classid, c.name, c.semester, c.year, c.userid, c.level"
+        . "FROM classes as c, users as u WHERE c.userid = u.userid ORDER BY c.classid DESC");
+    foreach ($classesList as &$article) {
         // format posted date
         $datetime = strtotime($article['creationTS']);
         $postedDate = date('M d, Y \a\t H:i:s', $datetime );
         $article['postedDate'] = $postedDate;
-        // only show the beginning of body if it's long, also remove html tags
-        $fullBodyNoTags = strip_tags($article['body']);
-        $bodyPreview = substr(strip_tags($fullBodyNoTags), 0, 100); // FIXME
-        $bodyPreview .= (strlen($fullBodyNoTags) > strlen($bodyPreview)) ? "..." : "";
-        $article['body'] = $bodyPreview;
     }
-    return $this->view->render($response, 'index.html.twig', ['list' => $articleList]);
-    */
+    return $this->view->render($response, 'index.html.twig', ['list' => $classesList]);
 });
 
     //  SESSION
