@@ -19,9 +19,9 @@ if (strpos($_SERVER['HTTP_HOST'], "ipd21.com") !== false) {
     DB::$password = 'Xe00rpz64k9c';
 } else {
     //  Local Hosting
-    DB::$dbName = 'day06slimblog'; //  FIXME
-    DB::$user = 'day06slimblog'; //  FIXME
-    DB::$password = 'fuLyBzeBY2qzyV32'; //  FIXME
+    DB::$dbName = 'classnotes';
+    DB::$user = 'classnotes';
+    DB::$password = 'PLBeZhWJK6G7bS7L';
     DB::$port = 3333;
 }
 
