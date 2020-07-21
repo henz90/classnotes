@@ -1,0 +1,18 @@
+body {
+    background-color: whitesmoke;
+}
+
+#logo {
+    background-color: black;
+}
+
+#nav {
+    float: left;
+    position: sticky;
+    background-color: goldenrod;
+}
+
+#content {
+    float: none;
+    background-color: gold;
+}

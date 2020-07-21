@@ -9,7 +9,7 @@ $app->get('/internalerror', function ($request, $response, $args) {
 
     //  MAINPAGE
 $app->get('/', function ($request, $response, $args) {
-    return $response->write("This is Index");
+    //return $response->write("This is Index");
     $classesList = DB::query("SELECT c.classid, c.name, c.semester, c.year, c.userid, c.level"
         . "FROM classes as c, users as u WHERE c.userid = u.userid ORDER BY c.classid DESC");
     foreach ($classesList as &$article) {
