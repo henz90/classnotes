@@ -37,11 +37,11 @@ $app->post('/register', function ($request, $response, $args) {
     if ($pass1 != $pass2) {
         array_push($errorList, "Passwords do not match");
     } else {
-        if ((strlen($pass1) < 6) || (strlen($pass1) > 100)
+        if ((strlen($pass1) < 6) || (strlen($pass1) > 16)
                 || (preg_match("/[A-Z]/", $pass1) == FALSE )
                 || (preg_match("/[a-z]/", $pass1) == FALSE )
                 || (preg_match("/[0-9]/", $pass1) == FALSE )) {
-            array_push($errorList, "Password must be 6-100 characters long, "
+            array_push($errorList, "Password must be 6-16 characters long, "
                 . "with at least one uppercase, one lowercase, and one digit in it");
         }
     }
@@ -50,7 +50,7 @@ $app->post('/register', function ($request, $response, $args) {
         return $this->view->render($response, 'register.html.twig',
                 [ 'errorList' => $errorList, 'v' => ['name' => $name, 'email' => $email ]  ]);
     } else {
-        DB::insert('users', ['name' => $name, 'email' => $email, 'password' => $pass1]);
+        DB::insert('users', ['name' => $name, 'email' => $email, 'password' => $pass1, 'level' => 0]);
         return $this->view->render($response, 'register_success.html.twig');
     }
 });
@@ -66,8 +66,11 @@ $app->get('/isemailtaken/[{email}]', function ($request, $response, $args) {
     }
 });
 
+
   //  LOGIN
-// STATE 1: first display
+// STATE 1: first display 
+
+/*
 $app->get('/login', function ($request, $response, $args) {
     return $this->view->render($response, 'login.html.twig', ['userSession' => null]);
 });
@@ -94,13 +97,15 @@ $app->post('/login', function ($request, $response, $args)  use ($log){
         $log ->debug(sprintf("Login successful for email %s, uid=%d, from %s", $email, $record['id'], $_SERVER['REMOTE_ADDR']));
         return $this->view->render($response, 'login_success.html.twig', ['userSession' => $_SESSION['user']]);
     }
-});
+}); 
+*/
 
     //  LOGOUT
 // STATE 1: first display
+/*
 $app->get('/logout', function ($request, $response, $args) use ($log){
     $log ->debug(sprintf("Logout for uid=%d from %s", @$_SESSION['user']['id'], $_SERVER['REMOTE_ADDR']));
     unset($_SESSION['user']);
     return $this->view->render($response, 'logout.html.twig', ['userSession' => null]);
 });
-
+*/

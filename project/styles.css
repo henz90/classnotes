@@ -7,12 +7,51 @@ body {
 }
 
 #nav {
-    float: left;
-    position: sticky;
+    position: absolute;
+    left: 0;
+    top: 0;
     background-color: goldenrod;
 }
 
 #content {
-    float: none;
     background-color: goldenrod;
+    width: auto;
+    margin-left: 16em;
+    padding: 0.5em 0 0.5em 1em;
 }
+
+/* 
+CSS for register page
+*/
+.errorMessage {
+    padding-top: 2em;
+}
+
+#regForm {
+    display: inline-block;
+}
+
+#regForm > label {
+    display: block;
+    margin: 10px 0 5px 0;
+    font-weight: 700;
+}
+
+#regForm > input[type=text], #regForm > input[type=password] {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+}
+
+#regForm > input[type=submit] {
+    display: block;
+    background-color: #4EBF60;
+    color: white;
+    margin: 0.8em 0 0 0.5em;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+}
+/* 
+end of CSS for register page 
+*/
