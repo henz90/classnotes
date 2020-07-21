@@ -13,3 +13,13 @@ YYYY/MM/DD  - NAME
 1.  FIRST SCRUM
 2.  Start TRELLO board
 3.  I'll find out
+
+2020/07/21 - HENRY
+1.	Updated SQL database / Completed Trelllo Board / Split Index
+2.	Create main webpage so that it's visible
+3.	Nothing yet
+
+2020/07/21 - NORMAN
+1.	
+2.	
+3.	
