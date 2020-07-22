@@ -20,7 +20,7 @@
     <form method="post" id="classForm">
 
         <label>Class Name</label>
-        <input type="text" name="name" value="{{v.title}}" placeholder="Class Name">
+        <input type="text" name="name" value="{{c.title}}" placeholder="Class Name">
 
         <label>Semester <i>OPTIONAL</i></label>
         <input type="text" name="semester" placeholder="Summer">
@@ -29,7 +29,7 @@
         <input type="number" name="year" placeholder=date("Y")>
 
         <label>Class Description</label>
-        <textarea name="body" cols="60" rows="10">{{v.body}}</textarea><br>
+        <textarea name="body" cols="60" rows="10">{{c.body}}</textarea><br>
 
         <input type="submit" value="Add Class">
     </form>
