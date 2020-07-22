@@ -23,3 +23,13 @@ YYYY/MM/DD  - NAME
 1.	Started on register page
 2.	Finish (work on) register page
 3.	Just need some time to figure out some stuff
+
+2020/07/22 - HENRY
+1.	Made webpage visible and created some CSS
+2.	Start work on the classes implementation
+3.	Main page doesn't load (loads internal error)
+
+2020/07/22 - NORMAN
+1.	
+2.	
+3.	
