@@ -19,9 +19,16 @@ $app->post('/register', function ($request, $response, $args) {
     //
     $errorList = array();
     if (preg_match('/^[a-zA-Z0-9\ \\._\'"-]{4,50}$/', $name) != 1) { // no match
-        array_push($errorList, "Name must be 4-50 characters long and consist of letters, digits, "
+        array_push($errorList, "Username must be 4-50 characters long and consist of letters, digits, "
             . "spaces, dots, underscores, apostrophies, or minus sign.");
         $name = "";
+    } else {
+        // is username already in use?
+        $record = DB::queryFirstRow("SELECT * FROM users WHERE name=%s", $name);
+        if ($record) {
+            array_push($errorList, "This username is already registered");
+            $name = "";
+        }
     }
     if (filter_var($email, FILTER_VALIDATE_EMAIL) == FALSE) {
         array_push($errorList, "Email does not look valid");
@@ -66,21 +73,39 @@ $app->get('/isemailtaken/[{email}]', function ($request, $response, $args) {
     }
 });
 
+// username AJAX
+$app->get('/isusernametaken/[{name}]', function ($request, $response, $args) {
+    $username = isset($args['name']) ? $args['name'] : "";
+    $record = DB::queryFirstRow("SELECT * FROM users WHERE name=%s", $username);
+    if ($record) {
+        return $response->write("Username already in use");
+    } else {
+        return $response->write("");
+    }
+});
+
+// debug function to output to console to help with testing
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+
+    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+}
 
   //  LOGIN
 // STATE 1: first display 
 
-/*
 $app->get('/login', function ($request, $response, $args) {
     return $this->view->render($response, 'login.html.twig', ['userSession' => null]);
 });
 
 // STATE 2&3: receiving submission
 $app->post('/login', function ($request, $response, $args)  use ($log){
-    $email = $request->getParam('email');
+    $username = $request->getParam('name');
     $password = $request->getParam('password');
     //
-    $record = DB::queryFirstRow("SELECT * FROM users WHERE email=%s", $email);
+    $record = DB::queryFirstRow("SELECT * FROM users WHERE name=%s", $username);
     $loginSuccess = false;
     if ($record) {
         if ($record['password'] == $password) {
@@ -89,23 +114,20 @@ $app->post('/login', function ($request, $response, $args)  use ($log){
     }
     //
     if (!$loginSuccess) {
-        $log ->info(sprintf("Login failed for email %s from %s", $email, $_SERVER['REMOTE_ADDR']));
+        $log ->info(sprintf("Login failed for username %s from %s", $username, $_SERVER['REMOTE_ADDR']));
         return $this->view->render($response, 'login.html.twig', [ 'error' => true ]);
     } else {
         unset($record['password']); // for security reasons remove password from session
         $_SESSION['user'] = $record; // remember user logged in
-        $log ->debug(sprintf("Login successful for email %s, uid=%d, from %s", $email, $record['id'], $_SERVER['REMOTE_ADDR']));
+        $log ->debug(sprintf("Login successful for username %s, uid=%d, from %s", $username, $record['userid'], $_SERVER['REMOTE_ADDR']));
         return $this->view->render($response, 'login_success.html.twig', ['userSession' => $_SESSION['user']]);
     }
-}); 
-*/
+});
 
     //  LOGOUT
 // STATE 1: first display
-/*
 $app->get('/logout', function ($request, $response, $args) use ($log){
     $log ->debug(sprintf("Logout for uid=%d from %s", @$_SESSION['user']['id'], $_SERVER['REMOTE_ADDR']));
     unset($_SESSION['user']);
     return $this->view->render($response, 'logout.html.twig', ['userSession' => null]);
 });
-*/

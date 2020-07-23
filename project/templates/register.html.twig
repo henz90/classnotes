@@ -12,6 +12,11 @@
                 $("#emailTaken").load("/isemailtaken/" + email);
             });
 
+            $('input[name=name]').on('paste blur change input', function() {
+                var username = $('input[name=name]').val();
+                $("#userTaken").load("/isusernametaken/" + username);
+            });
+
             $(document).ajaxError(function(event, jqxhr, settings, thrownError) {
                 console.log("Ajax error occured on " + settings.url);
                 alert("Ajax error occured");
@@ -31,10 +36,11 @@
         </ul>
     {% endif %}
 
-    <form method="post" id="regForm">
+    <form method="post" class="userForm">
 
         <label>Username</label>
         <input type="text" name="name" value="{{ v.name }}" placeholder="username">
+        <span class="errorMessage" id="userTaken"></span>
 
         <label>Email</label>
         <input type="text" name="email" value="{{ v.email }}" placeholder="john.doe@cats.com">
