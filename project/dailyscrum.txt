@@ -33,3 +33,13 @@ YYYY/MM/DD  - NAME
 1.	Register page "complete" (for now)
 2.	Login/session handling
 3.	Figuring out how session stuff is handled (just need time to figure it out)
+
+2020/07/23 - HENRY
+1.	
+2.	
+3.	
+
+2020/07/2. - NORMAN
+1.	
+2.	
+3.	
