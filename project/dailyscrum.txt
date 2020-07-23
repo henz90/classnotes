@@ -39,7 +39,7 @@ YYYY/MM/DD  - NAME
 2.	Fix main page issues
 3.	Fixing main page issues
 
-2020/07/2. - NORMAN
-1.	
-2.	
-3.	
+2020/07/23 - NORMAN
+1.	Nothing was done yesterday (went to babysit for brother)
+2.	Login/session handling
+3.	Gotta be productive today
