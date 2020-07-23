@@ -9,9 +9,9 @@ $app->get('/', function ($request, $response, $args) {
             . "FROM classes as c, users as u WHERE c.userid = u.userid ORDER BY c.classid DESC");
             foreach ($classesList as &$article) {
                 $fullBodyNoTags = strip_tags($article['description']);
-                $bodyPreview = substr(strip_tags($fullBodyNoTags), 0, 100); // FIXME
+                $bodyPreview = substr(strip_tags($fullBodyNoTags), 0, 100);
                 $bodyPreview .= (strlen($fullBodyNoTags) > strlen($bodyPreview)) ? "..." : "";
-                $article['body'] = $bodyPreview;
+                $article['description'] = $bodyPreview;
             }
         return $this->view->render($response, 'index.html.twig', ['list' => $classesList]);
 });
