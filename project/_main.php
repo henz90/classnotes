@@ -11,7 +11,8 @@ $app->get('/', function ($request, $response, $args) {
 
             foreach ($classesList as &$article) {
                 // changed from description to name for now. There's no description field in classes?
-                $fullBodyNoTags = strip_tags($article['name']);
+                //  There is, it's in the SQL design
+                $fullBodyNoTags = strip_tags($article['description']);
                 $bodyPreview = substr(strip_tags($fullBodyNoTags), 0, 100);
                 $bodyPreview .= (strlen($fullBodyNoTags) > strlen($bodyPreview)) ? "..." : "";
                 $article['description'] = $bodyPreview;
