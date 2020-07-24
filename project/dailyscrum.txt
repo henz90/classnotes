@@ -43,3 +43,13 @@ YYYY/MM/DD  - NAME
 1.	Nothing was done yesterday (went to babysit for brother)
 2.	Login/session handling
 3.	Gotta be productive today
+
+2020/07/24 - HENRY
+1.	Created class added and corrected some issues with the mainpage
+2.	Create class webpage and add comments
+3.	Main webpage shows username not class name
+
+2020/07/24 - NORMAN
+1.	
+2.	
+3.	
