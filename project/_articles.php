@@ -38,6 +38,6 @@ $app->post('/create_class', function ($request, $response, $args) {
         $authorId = $_SESSION['user']['userid'];
         DB::insert('classes', ['userid' => $authorId, 'name' => $name, 'body' => $body, 'level' => 0]);
         $articleId = DB::insertId();
-        return $this->view->render($response, 'addarticle_success.html.twig', ['id' => $articleId]);
+        return $this->view->render($response, 'addclass_success.html.twig', ['id' => $articleId]);
     }
 });

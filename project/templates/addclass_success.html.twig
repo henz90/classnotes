@@ -1,0 +1,14 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block content %}
+    {% for c in list %}
+    <div id="">
+        <p>Class Added:</p>
+        <h1><a href="/class/{{c.classid}}">{{c.name}}</a></h1>
+        <p>{{c.body}}</p>
+    </div>
+    </br>
+    {% endfor %}
+{% endblock %}
