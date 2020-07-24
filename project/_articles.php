@@ -19,7 +19,7 @@ $app->post('/create_class', function ($request, $response, $args) {
         return $this->view->render($response, 'error_access_denied.html.twig');
     }
     $name = $request->getParam('name');
-    $body = $request->getParam('description');
+    $body = $request->getParam('body');
     //  Sanitize the Body:
     $body = strip_tags($body, "<p><ul><li><em><strong><i><b><ol><h3><h4><h5><span>");
     $errorList = array();

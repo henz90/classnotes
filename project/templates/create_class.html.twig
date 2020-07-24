@@ -19,16 +19,17 @@
 
     <form method="post" id="classForm">
 
-        <label>Class Name</label>
-        <input type="text" name="name" value="{{c.title}}" placeholder="Class Name">
+        <label>Class Name:</label>
+        <input type="text" name="name" value="{{c.name}}" placeholder="Class Name">
 
-        <label>Semester <i>OPTIONAL</i></label>
-        <input type="text" name="semester" placeholder="Summer">
+        <label>Semester <i>OPTIONAL</i> :</label>
+        <input type="text" name="semester" value="{{c.semester}}" placeholder="Summer">
 
-        <label>Year</label>
-        <input type="number" name="year" placeholder=date("Y")>
-
-        <label>Class Description</label>
+        <label>Year:</label>
+        <input type="number" value="{{c.year}}" name="year">
+        </b>
+        <label>Class Description:</label>
+        </b>
         <textarea name="body" cols="60" rows="10">{{c.body}}</textarea><br>
 
         <input type="submit" value="Add Class">
