@@ -6,16 +6,14 @@ require_once '_setup.php';
 $app->get('/', function ($request, $response, $args) {
         //return $response->write("This is Index");
         // TODO: Insert class description into the query
-        $classesList = DB::query("SELECT c.classid, c.name, c.semester, c.year, c.userid, c.level, c.description, u.name"
+        $classesList = DB::query("SELECT c.classid, c.name, c.semester, c.year, c.userid, c.level, c.body, u.name"
         . " FROM classes as c, users as u WHERE c.userid = u.userid ORDER BY c.classid DESC");
 
             foreach ($classesList as &$article) {
-                // changed from description to name for now. There's no description field in classes?
-                //  There is, it's in the SQL design
-                $fullBodyNoTags = strip_tags($article['description']);
+                $fullBodyNoTags = strip_tags($article['body']);
                 $bodyPreview = substr(strip_tags($fullBodyNoTags), 0, 100);
                 $bodyPreview .= (strlen($fullBodyNoTags) > strlen($bodyPreview)) ? "..." : "";
-                $article['description'] = $bodyPreview;
+                $article['body'] = $bodyPreview;
             }
         return $this->view->render($response, 'index.html.twig', ['list' => $classesList]);
 });
