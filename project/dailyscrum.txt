@@ -50,6 +50,6 @@ YYYY/MM/DD  - NAME
 3.	Main webpage shows username not class name
 
 2020/07/24 - NORMAN
-1.	
-2.	
-3.	
+1.	Login/session handling, mainpage testing done for now.
+2.	Creating lessions/testing creating a class.
+3.	How do I connect lessons to their classes? Probably just foreign keys but I'll find out.
