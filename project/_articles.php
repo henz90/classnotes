@@ -35,7 +35,7 @@ $app->post('/create_class', function ($request, $response, $args) {
         return $this->view->render($response, 'create_class.html.twig',
                 [ 'errorList' => $errorList, 'c' => ['name' => $name, 'body' => $body ]  ]);
     } else {
-        $authorId = $_SESSION['user']['id'];
+        $authorId = $_SESSION['user']['userid'];
         DB::insert('articles', ['userid' => $authorId, 'name' => $name, 'body' => $body, 'level' => 0]);
         $articleId = DB::insertId();
         return $this->view->render($response, 'addarticle_success.html.twig', ['id' => $articleId]);

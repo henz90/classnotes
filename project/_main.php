@@ -5,7 +5,6 @@ require_once '_setup.php';
     //  MAINPAGE
 $app->get('/', function ($request, $response, $args) {
         //return $response->write("This is Index");
-        // TODO: Insert class description into the query
         $classesList = DB::query("SELECT c.classid, c.name, c.semester, c.year, c.userid, c.level, c.body, u.name"
         . " FROM classes as c, users as u WHERE c.userid = u.userid ORDER BY c.classid DESC");
 
