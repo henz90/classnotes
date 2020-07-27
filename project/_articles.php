@@ -49,7 +49,7 @@ $app->post('/create_class', function ($request, $response, $args) {
 $app->map(['GET', 'POST'],'/article/{id:[0-9]+}', function ($request, $response, $args) {
     // step 1: fetch article and author info
     $article = DB::queryFirstRow("SELECT a.classid, a.classname, a.semester, a.year, a.userid, a.level, a.body, u.name "
-            . "FROM classes as a, users as u WHERE a.userid = u.id AND a.id = %d", $args['id']);
+            . "FROM classes as a, users as u WHERE a.userid = u.userid AND a.id = %d", $args['id']);
     if (!$article) { // TODO: use Slim's default 404 page instead of our custom one
         $response = $response->withStatus(404);
         return $this->view->render($response, 'article_not_found.html.twig');
