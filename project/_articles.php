@@ -44,3 +44,40 @@ $app->post('/create_class', function ($request, $response, $args) {
         return $this->view->render($response, 'addclass_success.html.twig', ['id' => $articleId]);
     }
 });
+
+    //  VIEW CLASS //   FIXME: Needs work!
+$app->map(['GET', 'POST'],'/article/{id:[0-9]+}', function ($request, $response, $args) {
+    // step 1: fetch article and author info
+    $article = DB::queryFirstRow("SELECT a.classid, a.classname, a.semester, a.year, a.userid, a.level, a.body, u.name "
+            . "FROM classes as a, users as u WHERE a.userid = u.id AND a.id = %d", $args['id']);
+    if (!$article) { // TODO: use Slim's default 404 page instead of our custom one
+        $response = $response->withStatus(404);
+        return $this->view->render($response, 'article_not_found.html.twig');
+    }
+    // step 2: handle comment submission if there is one
+    if ($request->getMethod() == "POST" ) {
+        // is user authenticated?
+        if (!isset($_SESSION['user'])) { // refuse if user not logged in
+            $response = $response->withStatus(403);
+            return $this->view->render($response, 'error_access_denied.html.twig');
+        }
+        $authorId = $_SESSION['user']['id'];
+        $body = $request->getParam('body');
+        // TODO: we could check other things, like banned words
+        if (strlen($body) > 0) {
+            DB::insert('comments', [
+                //FIXME: Need to implement comments into here
+            ]);
+        }
+    }
+    // step 3: fetch article comments
+        // FIXME: Correct the inputs
+    $commentsList = DB::query("SELECT c.id, u.name as authorName, c.creationTime, c.body FROM comments c, users u WHERE c.authorId=u.id ORDER BY c.id");    
+    foreach ($commentsList as &$comment) {
+        $datetime = strtotime($comment['creationTime']);
+        $postedDate = date('M d, Y \a\t H:i:s', $datetime );
+        $comment['postedDate'] = $postedDate;
+    }
+    //
+    return $this->view->render($response, 'class.html.twig', ['a' => $article, 'commentsList' => $commentsList]);
+});

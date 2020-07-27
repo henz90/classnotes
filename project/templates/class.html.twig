@@ -1,0 +1,34 @@
+{% extends "master.html.twig" %}
+
+{% block title %}{{c.classname}}{% endblock %}
+
+{% block content %}
+    <div id="centerArticle">
+        <h1 class="centered">{{a.classname}}</h1>
+        <hr>
+        <i>Posted by {{a.username}}</i>  
+        <hr>
+        <div>{{a.body|raw}}</div>
+        <hr>
+        {% if userSession %}
+        <div class="commentForm">
+            <form method="post">
+            Add your Comments:
+            </br>
+            <textarea name="body">{{c.body}}</textarea>
+            </br>
+            <input type="submit" value="Add Comment">
+            </form>
+        </div>
+        {% endif %}
+        <div class="articleComments">
+            {% for c in commentsList %}
+            <div class="commentBody">
+            <span class="commentAuthorInfo">{{u.username}} said on {{c.date}}</span>
+            <div>{{c.body}}</div>
+            </div>
+            {% endfor %}
+        </div>
+        <p><a href="/">Back to Home</a></p>
+    </div>
+{% endblock %}
