@@ -18,20 +18,24 @@
     {% endif %}
 
     <form method="post" id="classForm">
-
-        <label>Class Name:</label>
+        <label for="name">Class Name:</label>
         <input type="text" name="name" value="{{c.name}}" placeholder="Class Name">
-
-        <label>Semester <i>OPTIONAL</i> :</label>
-        <input type="text" name="semester" value="{{c.semester}}" placeholder="Summer">
-
-        <label>Year:</label>
+        </br>
+        <label for="semester">Semester <i>OPTIONAL</i> :</label>
+        <select name="semester">
+            <option value="Spring">Spring</option>
+            <option value="Summer">Summer</option>
+            <option value="Fall">Fall</option>
+            <option value="Winter">Winter</option>
+        </select>
+        </br>
+        <label for="year">Year:</label>
         <input type="number" value="{{c.year}}" name="year">
-        </b>
-        <label>Class Description:</label>
-        </b>
-        <textarea name="body" cols="60" rows="10">{{c.body}}</textarea><br>
-
+        </br>
+        <label for="body">Class Description:</label>
+        </br>
+        <textarea name="body" cols="60" rows="10">{{c.body}}</textarea>
+        </br>
         <input type="submit" value="Add Class">
     </form>
 {% endblock %}

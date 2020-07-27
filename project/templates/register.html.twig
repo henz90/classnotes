@@ -38,18 +38,18 @@
 
     <form method="post" class="userForm">
 
-        <label>Username</label>
+        <label for="name">Username</label>
         <input type="text" name="name" value="{{ v.name }}" placeholder="username">
         <span class="errorMessage" id="userTaken"></span>
 
-        <label>Email</label>
+        <label for="email">Email</label>
         <input type="text" name="email" value="{{ v.email }}" placeholder="john.doe@cats.com">
         <span class="errorMessage" id="emailTaken"></span>
 
-        <label>Password</label>
+        <label for="pass1">Password</label>
         <input type="password" name="pass1" placeholder="**********">
 
-        <label>Password (repeated)</label>
+        <label for="pass2">Password (repeated)</label>
         <input type="password" name="pass2" placeholder="**********">
 
         <input type="submit" value="Register">
