@@ -18,7 +18,7 @@ $app->post('/create_class', function ($request, $response, $args) {
         $response = $response->withStatus(403);
         return $this->view->render($response, 'error_access_denied.html.twig');
     }
-    $name = $request->getParam('name');
+    $name = $request->getParam('name'); //  FIXME - REG CHECK
     $body = $request->getParam('body');
     //  Sanitize the Body:
     $body = strip_tags($body, "<p><ul><li><em><strong><i><b><ol><h3><h4><h5><span>");

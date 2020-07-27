@@ -57,6 +57,8 @@ YYYY/MM/DD  - NAME
 2020/07/27 - HENRY
 1.	Nothing :(
 2.	Create class webpage and add comments
+    Correct Class creation to include year and semester + reg check name of class & change semester to dropdown
+    Correct names in SQL of Class and User
 3.	Main webpage shows username not class name
 
 2020/07/27 - NORMAN
