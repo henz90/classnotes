@@ -35,7 +35,7 @@ $app->post('/create_class', function ($request, $response, $args) {
     }
     if ($errorList) {
         return $this->view->render($response, 'create_class.html.twig',
-                [ 'errorList' => $errorList, 'c' => ['name' => $name, 'body' => $body ]  ]);
+                [ 'errorList' => $errorList, 'c' => ['classname' => $name, 'body' => $body ]  ]);
     } else {
         $authorId = $_SESSION['user']['userid'];
         DB::insert('classes', ['classname' => $name, 'semester' => $semester, 'year' => $year, 'userid' => $authorId, 'level' => 0, 'body' => $body]);
