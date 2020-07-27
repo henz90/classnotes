@@ -6,6 +6,10 @@ body {
     background-color: black;
 }
 
+#class {
+    background-color: gold;
+}
+
 #nav {
     position: absolute;
     left: 0;

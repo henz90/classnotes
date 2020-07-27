@@ -18,15 +18,16 @@ $app->post('/create_class', function ($request, $response, $args) {
         $response = $response->withStatus(403);
         return $this->view->render($response, 'error_access_denied.html.twig');
     }
-    $name = $request->getParam('classname'); //  FIXME - REG CHECK
+    $name = $request->getParam('classname');
     $body = $request->getParam('body');
     $semester = $request->getParam('semester');
     $year = $request->getParam('year');
     //  Sanitize the Body:
     $body = strip_tags($body, "<p><ul><li><em><strong><i><b><ol><h3><h4><h5><span>");
     $errorList = array();
-    if (strlen($name) < 2 || strlen($name) > 100) {
-        array_push($errorList, "Title must be 2-100 characters long");
+    if (preg_match('/^[a-zA-Z0-9\ \\._\'"-]{2,100}$/', $name) != 1) { // Reg check on classname
+        array_push($errorList, "Title must be 2-100 characters long and consist of letters, digits, "
+            . "spaces, dots, underscores, apostrophies, or minus sign.");
         // keep the title even if invalid
     }
     if (strlen($body) < 2 || strlen($body) > 1000) {
