@@ -62,6 +62,6 @@ YYYY/MM/DD  - NAME
 3.	Main webpage shows username not class name
 
 2020/07/27 - NORMAN
-1.	
-2.	
-3.	
+1.	Test the class page
+2.	Create the lessons page
+3.	How to protect our site from people injecting code? Something to discuss with the teacher when we get back.
