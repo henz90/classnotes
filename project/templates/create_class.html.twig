@@ -18,11 +18,11 @@
     {% endif %}
 
     <form method="post" id="classForm">
-        <label for="name">Class Name:</label>
-        <input type="text" name="name" value="{{c.name}}" placeholder="Class Name">
+        <label for="classname">Class Name:</label>
+        <input type="text" name="classname" value="{{c.classname}}" placeholder="Class Name">
         </br>
         <label for="semester">Semester <i>OPTIONAL</i> :</label>
-        <select name="semester">
+        <select name="semester" value="{{c.semester}}">
             <option value="Spring">Spring</option>
             <option value="Summer">Summer</option>
             <option value="Fall">Fall</option>
