@@ -12,8 +12,8 @@
                 $("#emailTaken").load("/isemailtaken/" + email);
             });
 
-            $('input[name=name]').on('paste blur change input', function() {
-                var username = $('input[name=name]').val();
+            $('input[name=username]').on('paste blur change input', function() {
+                var username = $('input[name=username]').val();
                 $("#userTaken").load("/isusernametaken/" + username);
             });
 
@@ -39,7 +39,7 @@
     <form method="post" class="userForm">
 
         <label for="username">Username</label>
-        <input type="text" name="username" value="{{ v.name }}" placeholder="username">
+        <input type="text" name="username" value="{{ v.username }}" placeholder="username">
         <span class="errorMessage" id="userTaken"></span>
 
         <label for="email">Email</label>
