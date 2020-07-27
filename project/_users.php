@@ -12,7 +12,7 @@ $app->get('/register', function ($request, $response, $args) {
 
 // STATE 2&3: receiving submission
 $app->post('/register', function ($request, $response, $args) {
-    $name = $request->getParam('name');
+    $name = $request->getParam('username');
     $email = $request->getParam('email');
     $pass1 = $request->getParam('pass1');
     $pass2 = $request->getParam('pass2');
@@ -24,7 +24,7 @@ $app->post('/register', function ($request, $response, $args) {
         $name = "";
     } else {
         // is username already in use?
-        $record = DB::queryFirstRow("SELECT * FROM users WHERE name=%s", $name);
+        $record = DB::queryFirstRow("SELECT * FROM users WHERE username=%s", $name);
         if ($record) {
             array_push($errorList, "This username is already registered");
             $name = "";
@@ -55,9 +55,9 @@ $app->post('/register', function ($request, $response, $args) {
     //
     if ($errorList) {
         return $this->view->render($response, 'register.html.twig',
-                [ 'errorList' => $errorList, 'v' => ['name' => $name, 'email' => $email ]  ]);
+                [ 'errorList' => $errorList, 'v' => ['username' => $name, 'email' => $email ]  ]);
     } else {
-        DB::insert('users', ['name' => $name, 'email' => $email, 'password' => $pass1, 'level' => 0]);
+        DB::insert('users', ['username' => $name, 'email' => $email, 'password' => $pass1, 'level' => 0]);
         return $this->view->render($response, 'register_success.html.twig');
     }
 });
@@ -74,9 +74,9 @@ $app->get('/isemailtaken/[{email}]', function ($request, $response, $args) {
 });
 
 // username AJAX
-$app->get('/isusernametaken/[{name}]', function ($request, $response, $args) {
-    $username = isset($args['name']) ? $args['name'] : "";
-    $record = DB::queryFirstRow("SELECT * FROM users WHERE name=%s", $username);
+$app->get('/isusernametaken/[{username}]', function ($request, $response, $args) {
+    $username = isset($args['username']) ? $args['username'] : "";
+    $record = DB::queryFirstRow("SELECT * FROM users WHERE username=%s", $username);
     if ($record) {
         return $response->write("Username already in use");
     } else {
@@ -102,10 +102,10 @@ $app->get('/login', function ($request, $response, $args) {
 
 // STATE 2&3: receiving submission
 $app->post('/login', function ($request, $response, $args)  use ($log){
-    $username = $request->getParam('name');
+    $username = $request->getParam('username');
     $password = $request->getParam('password');
     //
-    $record = DB::queryFirstRow("SELECT * FROM users WHERE name=%s", $username);
+    $record = DB::queryFirstRow("SELECT * FROM users WHERE username=%s", $username);
     $loginSuccess = false;
     if ($record) {
         if ($record['password'] == $password) {

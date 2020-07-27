@@ -18,8 +18,10 @@ $app->post('/create_class', function ($request, $response, $args) {
         $response = $response->withStatus(403);
         return $this->view->render($response, 'error_access_denied.html.twig');
     }
-    $name = $request->getParam('name'); //  FIXME - REG CHECK
+    $name = $request->getParam('classname'); //  FIXME - REG CHECK
     $body = $request->getParam('body');
+    $semester = $request->getParam('semester');
+    $year = $request->getParam('year');
     //  Sanitize the Body:
     $body = strip_tags($body, "<p><ul><li><em><strong><i><b><ol><h3><h4><h5><span>");
     $errorList = array();
@@ -36,7 +38,7 @@ $app->post('/create_class', function ($request, $response, $args) {
                 [ 'errorList' => $errorList, 'c' => ['name' => $name, 'body' => $body ]  ]);
     } else {
         $authorId = $_SESSION['user']['userid'];
-        DB::insert('classes', ['userid' => $authorId, 'name' => $name, 'body' => $body, 'level' => 0]);
+        DB::insert('classes', ['classname' => $name, 'semester' => $semester, 'year' => $year, 'userid' => $authorId, 'level' => 0, 'body' => $body]);
         $articleId = DB::insertId();
         return $this->view->render($response, 'addclass_success.html.twig', ['id' => $articleId]);
     }
