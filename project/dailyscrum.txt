@@ -53,3 +53,13 @@ YYYY/MM/DD  - NAME
 1.	Login/session handling, mainpage testing done for now.
 2.	Creating lessions/testing creating a class.
 3.	How do I connect lessons to their classes? Probably just foreign keys but I'll find out.
+
+2020/07/27 - HENRY
+1.	Nothing :(
+2.	Create class webpage and add comments
+3.	Main webpage shows username not class name
+
+2020/07/27 - NORMAN
+1.	
+2.	
+3.	
