@@ -65,3 +65,15 @@ YYYY/MM/DD  - NAME
 1.	Test the class page
 2.	Create the lessons page
 3.	How to protect our site from people injecting code? Something to discuss with the teacher when we get back.
+
+2020/07/28 - HENRY
+1.	Correct Class creation to include year and semester + reg check name of class & change semester to dropdown
+    Correct names in SQL and webpage of Class and User
+2.	Create class webpage and add comments
+    Add header Nav to Master
+3.	Make username show on mainpage
+
+2020/07/28 - NORMAN
+1.	
+2.	
+3.	
