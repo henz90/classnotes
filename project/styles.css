@@ -6,13 +6,19 @@ body {
     background-color: black;
 }
 
-#header {
+#header > ul{
+    list-style-type: none;
+    overflow: hidden;
     border: 4px solid black;
     background-color: whitesmoke;
     color: black;
     margin: 10em;
     padding: 2em;
     width: auto;
+}
+
+#header > li {
+    float: left;
 }
 
 #class {
