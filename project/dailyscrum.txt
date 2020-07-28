@@ -74,6 +74,6 @@ YYYY/MM/DD  - NAME
 3.	Make username show on mainpage
 
 2020/07/28 - NORMAN
-1.	
-2.	
-3.	
+1.	Attempted to make lessons page
+2.	Continuing lessons
+3.	Populating dropdown menu with SQL query information. Emailed teacher about it.
