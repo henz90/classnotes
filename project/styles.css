@@ -9,6 +9,8 @@ body {
 #class {
     border: 4px solid black;
     background-color: gold;
+    margin: 10em;
+    padding: 5em;
 }
 
 #nav {
