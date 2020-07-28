@@ -9,6 +9,14 @@
         <div id="nav">
             <a href="/"><img src="/images/Logo.png" id="logo" alt="Classnotes Logo" width="250" height="250"></a>
             </br>
+            <ul id="header">
+                {% if userSession %}
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/profile/{{userSession['userid']}}">{{userSession['username']}}'s Profile</a></li>
+                {% else %}
+                    <h1>Welcome</h1>
+                {% endif %}
+            </ul>
             <ul id="menu">
                 {% if userSession %}
                     <li><a href="/logout">Logout</a></li>
