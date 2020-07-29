@@ -45,7 +45,7 @@ $app->post('/create_class', function ($request, $response, $args) {
     }
 });
 
-    //  VIEW CLASS //   FIXME: Needs work!
+    //  VIEW CLASS //
 $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $args) {
     // step 1: fetch article and author info
     $article = DB::queryFirstRow("SELECT cl.classid, cl.classname, cl.semester, cl.year, cl.userid, cl.level, cl.body, u.username "
@@ -71,7 +71,6 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
         }
     }
     // step 3: fetch article comments
-        // FIXME: Correct the inputs
     $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments co, users u WHERE co.userid=u.userid ORDER BY co.commentid");    
     foreach ($commentsList as &$comment) {
         $datetime = strtotime($comment['creationTime']);
