@@ -21,11 +21,11 @@
             </form>
         </div>
         {% endif %}
-        <div class="articleComments">
+        <div class="comments">
             {% for c in commentsList %}
             <div class="commentBody">
-            <span class="commentAuthorInfo">{{u.username}} said on {{c.date}}</span>
-            <div>{{c.body}}</div>
+            <span class="commentAuthorInfo">{{u.username}} said on {{co.date}}</span>
+            <div>{{co.body}}</div>
             </div>
             {% endfor %}
         </div>
