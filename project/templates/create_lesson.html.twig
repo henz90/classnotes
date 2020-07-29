@@ -13,7 +13,6 @@
                 alert("Ajax error occured");
             });
 
-            $("#lesson_year").load("/islessonyear");
         });
     </script>
 {% endblock %}
@@ -29,6 +28,8 @@
     {% endif %}
 
     <form method="post" class="userForm">
+        <label for="classinputid">Class ID</label>
+        <input type="text" name="classinputid" id="classinputid" value="">
         <label for="year">Choose year</label>
         <select name="year" value="{{c.year}}" id="lesson_year">
             <option value="2020">2020</option>

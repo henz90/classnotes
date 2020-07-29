@@ -13,13 +13,10 @@ $app->get('/create_lesson', function ($request, $response, $args) {
     return $this->view->render($response, 'create_lesson.html.twig');
 });
 
-// AJAX use, to populate year dropdown
-/*
-$app->get('/islessonyear', function ($request, $response, $args) {
-    $record = DB::query("SELECT distinct year FROM classes order by year desc");
-    $returnvalue = "";
-    while ($row = mysqli_fetch_array($record)) {
-        $returnvalue = $returnvalue . "<option value=\"$row['year'];></option>"
-    }
-}); 
-*/
+// creating lesson AJAX
+//FIXME is this even being called?
+$app->get('/cancreatelesson/[{classname}]', function ($request, $response, $args) {
+    $classname = isset($args['classname']) ? $args['classname'] : "";
+    $id = DB::queryFirstRow("SELECT FIRST(classid) FROM classes WHERE classname=%s", $classname);
+    $_SESSION['classid'] = $id;
+});
