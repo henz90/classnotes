@@ -48,8 +48,8 @@ $app->post('/create_class', function ($request, $response, $args) {
     //  VIEW CLASS //   FIXME: Needs work!
 $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $args) {
     // step 1: fetch article and author info
-    $article = DB::queryFirstRow("SELECT a.classid, a.classname, a.semester, a.year, a.userid, a.level, a.body, u.username "
-            . "FROM classes as a, users as u WHERE a.userid = u.userid AND a.id = %d", $args['id']);
+    $article = DB::queryFirstRow("SELECT cl.classid, cl.classname, cl.semester, cl.year, cl.userid, cl.level, cl.body, u.username "
+            . "FROM classes as cl, users as u WHERE cl.userid = u.userid AND cl.classid = %d", $args['id']);
     if (!$article) { // TODO: use Slim's default 404 page instead of our custom one
         $response = $response->withStatus(404);
         return $this->view->render($response, 'article_not_found.html.twig');
@@ -72,7 +72,7 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
     }
     // step 3: fetch article comments
         // FIXME: Correct the inputs
-    $commentsList = DB::query("SELECT c.id, u.username as authorName, c.creationTime, c.body FROM comments c, users u WHERE c.authorId=u.id ORDER BY c.id");    
+    $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments co, users u WHERE co.userid=u.userid ORDER BY co.commentid");    
     foreach ($commentsList as &$comment) {
         $datetime = strtotime($comment['creationTime']);
         $postedDate = date('M d, Y \a\t H:i:s', $datetime );
