@@ -7,22 +7,23 @@ body {
 }
 
 #header {
-    float: right;
+    margin-left: 16em;
+    padding: 0.5em 0 0.5em 1em;
 }
 
 #header > ul{
     list-style-type: none;
+    display: inline;
     overflow: hidden;
     border: 4px solid black;
     background-color: whitesmoke;
     color: black;
-    margin: 10em;
-    padding: 2em;
-    width: auto;
 }
 
 #header > li {
     float: left;
+    margin: 1em;
+    padding: 0.5em;
 }
 
 #class {
@@ -38,7 +39,6 @@ body {
     left: 0;
     top: 0;
     background-color: goldenrod;
-    margin-left: 16em;
     padding: 0.5em 0 0.5em 1em;
 }
 

@@ -16,30 +16,30 @@
             {% endif %}
         </ul>
     </div>
-        <div id="nav">
-            <a href="/"><img src="/images/Logo.png" id="logo" alt="Classnotes Logo" width="250" height="250"></a>
-            </br>
-            <ul id="menu">
-                {% if userSession %}
-                    <li><a href="/logout">Logout</a></li>
-                {% else %}
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
-                {% endif %}
-                <li>Random Class</li>
-                <li>Random Lesson</li>
-                <li><a href="/create_class">Create Class</a></li>
-                <li><a href="/class_list">Join Class</a></li>
-                <li><a href="/create_lesson">Create a Lesson</a></li>
-            </ul>
-        </div>
-        <div id="content">
-        {% block content %}{% endblock %}
-        </div>
-        <div id="footer">
-            {% block footer %}
-                Developed by Norman Fong and Henry Zakay.
-            {% endblock %}
-        </div>
+    <div id="nav">
+        <a href="/"><img src="/images/Logo.png" id="logo" alt="Classnotes Logo" width="250" height="250"></a>
+        </br>
+        <ul id="menu">
+            {% if userSession %}
+                <li><a href="/logout">Logout</a></li>
+            {% else %}
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            {% endif %}
+            <li>Random Class</li>
+            <li>Random Lesson</li>
+            <li><a href="/create_class">Create Class</a></li>
+            <li><a href="/class_list">Join Class</a></li>
+            <li><a href="/create_lesson">Create a Lesson</a></li>
+        </ul>
+    </div>
+    <div id="content">
+    {% block content %}{% endblock %}
+    </div>
+    <div id="footer">
+        {% block footer %}
+            Developed by Norman Fong and Henry Zakay.
+        {% endblock %}
+    </div>
     </body>
 </html>
