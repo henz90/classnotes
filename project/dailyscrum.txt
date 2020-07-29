@@ -84,6 +84,6 @@ YYYY/MM/DD  - NAME
 3.	Make username show on mainpage
 
 2020/07/29 - NORMAN
-1.	
-2.	
-3.	
+1.	Continuing lessons
+2.  Reworking the structure of lessons to be created off the class page
+3.	New ideas for lessons, new problems to go find
