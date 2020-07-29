@@ -77,3 +77,13 @@ YYYY/MM/DD  - NAME
 1.	Attempted to make lessons page
 2.	Continuing lessons
 3.	Populating dropdown menu with SQL query information. Emailed teacher about it.
+
+2020/07/29 - HENRY
+1.	Mangled the mainpage and added the header to Master - needs work
+2.	Create class webpage and add comments
+3.	Make username show on mainpage
+
+2020/07/29 - NORMAN
+1.	
+2.	
+3.	

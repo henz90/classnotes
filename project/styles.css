@@ -6,12 +6,10 @@ body {
     background-color: black;
 }
 
-
 #header {
     float: right;
 }
 
-/*  FIXME
 #header > ul{
     list-style-type: none;
     overflow: hidden;
@@ -26,7 +24,6 @@ body {
 #header > li {
     float: left;
 }
-*/
 
 #class {
     border: 4px solid black;
