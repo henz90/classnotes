@@ -2,7 +2,6 @@
 
 require_once '_setup.php';
 
-//WIP Populating dropdown with database is harder than i thought
 //ADD LESSON
 // STATE 1: first display
 $app->get('/create_lesson', function ($request, $response, $args) {
@@ -13,10 +12,10 @@ $app->get('/create_lesson', function ($request, $response, $args) {
     return $this->view->render($response, 'create_lesson.html.twig');
 });
 
+//WIP
 // creating lesson AJAX
-//FIXME is this even being called?
 $app->get('/cancreatelesson/[{classname}]', function ($request, $response, $args) {
     $classname = isset($args['classname']) ? $args['classname'] : "";
-    $id = DB::queryFirstRow("SELECT FIRST(classid) FROM classes WHERE classname=%s", $classname);
-    $_SESSION['classid'] = $id;
+    $id = DB::queryFirstRow("SELECT classid FROM classes WHERE classname=%s", $classname);
+    return $this->view->render($response, 'create_lesson.html.twig', ['c' => $id]);
 });
