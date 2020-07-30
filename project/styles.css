@@ -8,6 +8,7 @@ body {
 
 #header {
     margin-left: 16em;
+    margin-bottom: 0.5em;
     padding: 0.5em 0.5em 0.5em 1em;
     background-color: goldenrod;
 }
@@ -46,6 +47,7 @@ body {
     left: 0;
     top: 0;
     background-color: goldenrod;
+    margin: 0.5em;
     padding: 0.5em 0.5em 1em 1em;
 }
 
