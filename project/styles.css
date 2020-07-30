@@ -7,7 +7,7 @@ body {
 }
 
 #header {
-    margin-left: 15em;
+    margin-left: 17.5em;
     margin-bottom: 0.5em;
     margin-right: 0.5em;
     padding: 0.5em 0.5em 0.5em 1em;
@@ -49,19 +49,17 @@ body {
     top: 0;
     background-color: goldenrod;
     margin: 0.5em;
-    padding: 0.5em 0.5em 1em 1em;
 }
 
 #content {
     background-color: goldenrod;
     width: auto;
-    margin-left: 15em;
-    margin-right: 0.5em;
+    margin-left: 17.5em;
     padding: 0.5em 0 0.5em 1em;
 }
 
 #footer {
-    margin-left: 15em;
+    margin-left: 17.5em;
     background-color: goldenrod;
     padding: 0.5em 0 0.5em 1em;
 }
