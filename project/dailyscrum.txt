@@ -87,3 +87,13 @@ YYYY/MM/DD  - NAME
 1.	Continuing lessons
 2.  Reworking the structure of lessons to be created off the class page
 3.	New ideas for lessons, new problems to go find
+
+2020/07/30 - HENRY
+1.	Worked on Class webpage, comments added but needs work
+2.	Complete the class webpage (comments appear correctly)
+3.	Css for the header nav
+
+2020/07/30 - NORMAN
+1.	
+2.  
+3.	
