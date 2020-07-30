@@ -35,12 +35,12 @@
             </div>
             <p id="create_lesson">Create Lesson<p>
         {% endif %}
-        {% if co in commentsList %}
+        {% if commentsList %}
         <div class="comments">
             {% for co in commentsList %}
             <div class="commentBody">
                 </hr>
-                <span class="commentAuthorInfo">{{co.username}} said on {{co.date}}</span>
+                <span class="commentAuthorInfo"><a href="/profile/{{c.userid}}">{{c.username}}</a> said on {{co.date}}</span>
                 </hr>
                 <div>{{co.body}}</div>
             </div>
