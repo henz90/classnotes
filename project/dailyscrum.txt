@@ -94,6 +94,6 @@ YYYY/MM/DD  - NAME
 3.	Css for the header nav
 
 2020/07/30 - NORMAN
-1.	
-2.  
-3.	
+1.	Reworking Lessons
+2.  Trying to make lessons work
+3.	Getting used to using the libraries
