@@ -6,7 +6,7 @@
     {% for c in list %}
     <div id="class">
         <h1><a href="/class/{{c.classid}}">{{c.classname}}</a></h1>
-        <p>Created by <a href="/class/{{u.userid}}">{{u.username}}</a></p>
+        <p>Created by <a href="/class/{{c.userid}}">{{c.username}}</a></p>
         <p>{{c.body}}</p>
     </div>
     </br>
