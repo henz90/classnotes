@@ -73,7 +73,7 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
             ]);
         }
     }
-    // step 3: fetch article comments   //FIXME
+    // step 3: fetch article comments   //FIXME: Needs class.classid = comment.articleid
     $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments as co, users as u WHERE co.userid=u.userid ORDER BY co.commentid");  
     foreach ($commentsList as &$comment) {
         $datetime = strtotime($comment['creationTime']);
