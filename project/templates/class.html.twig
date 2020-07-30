@@ -35,15 +35,17 @@
             </div>
             <p id="create_lesson">Create Lesson<p>
         {% endif %}
+        {% if co in commentsList %}
         <div class="comments">
-            {% for c in commentsList %}
+            {% for co in commentsList %}
             <div class="commentBody">
                 </hr>
-                <span class="commentAuthorInfo">{{u.username}} said on {{co.date}}</span>
+                <span class="commentAuthorInfo">{{co.username}} said on {{co.date}}</span>
                 </hr>
                 <div>{{co.body}}</div>
             </div>
             {% endfor %}
+        {% endif %}
         </div>
         <p><a href="/">Back to Home</a></p>
     </div>
