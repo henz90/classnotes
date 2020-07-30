@@ -28,24 +28,28 @@
         <div>{{a.body|raw}}</div>
         <hr>
         {% if userSession %}
-        <div class="commentForm">
-            <form method="post">
-            Add your Comments:
-            </br>
-            <textarea name="body">{{c.body}}</textarea>
-            </br>
-            <input type="submit" value="Add Comment">
-            </form>
-        </div>
-        <p id="create_lesson">Create Lesson<p>
+            <div class="commentForm">
+                <form method="post">
+                Add your Comments:
+                </br>
+                <textarea name="body">{{c.body}}</textarea>
+                </br>
+                <input type="submit" value="Add Comment">
+                </form>
+            </div>
+            <p id="create_lesson">Create Lesson<p>
         {% endif %}
+        {% if commentsList %}
         <div class="comments">
-            {% for c in commentsList %}
+            {% for co in commentsList %}
             <div class="commentBody">
-                <span class="commentAuthorInfo">{{u.username}} said on {{co.date}}</span>
+                </hr>
+                <span class="commentAuthorInfo"><a href="/profile/{{co.userid}}">{{co.username}}</a> said on {{co.date}}</span>
+                </hr>
                 <div>{{co.body}}</div>
             </div>
             {% endfor %}
+        {% endif %}
         </div>
         <p><a href="/">Back to Home</a></p>
     </div>
