@@ -29,12 +29,11 @@
 
     <form method="post" class="userForm">
         <label for="classinputid">Class ID</label>
-        <input type="text" name="classinputid" id="classinputid" value="">
+        <input type="text" name="classinputid" id="classinputid" value="{{c.classid}}">
         <label for="year">Choose year</label>
         <select name="year" value="{{c.year}}" id="lesson_year">
             <option value="2020">2020</option>
         </select>
-
         <select name="semester" value="{{c.semester}}" id="lesson_semester">
             <option value="Spring">Spring</option>
         </select>

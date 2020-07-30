@@ -9,7 +9,11 @@
             $('#create_lesson').click(function() {
                 var classname = $('h1[class=centered]').text();
                 $.ajax({ url: "/cancreatelesson/" + classname });
-                alert("Cats");
+                alert("create lesson clicked");
+            });
+             $(document).ajaxError(function(event, jqxhr, settings, thrownError) {
+                console.log("Ajax error occured on " + settings.url);
+                alert("Ajax error occured");
             });
         });
     </script>
