@@ -66,7 +66,7 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
         // TODO: we could check other things, like banned words
         if (strlen($body) > 0) {
             DB::insert('comments', [
-                'articleId' => $args['id'],
+                'articleid' => $args['id'],
                 'userid' => $authorId,
                 'body' => $body,
                 'level' => 0
