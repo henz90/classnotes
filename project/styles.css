@@ -11,7 +11,10 @@ body {
     margin-bottom: 0.5em;
     margin-right: 0.5em;
     padding: 0.5em 0.5em 0.5em 1em;
-    background-color: goldenrod;
+}
+
+#header > h1 {
+    align-content: center;
 }
 
 #header > ul{
