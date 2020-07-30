@@ -61,7 +61,7 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
             $response = $response->withStatus(403);
             return $this->view->render($response, 'error_access_denied.html.twig');
         }
-        $authorId = $_SESSION['user']['id'];
+        $authorId = $_SESSION['user']['userid'];
         $body = $request->getParam('body');
         // TODO: we could check other things, like banned words
         if (strlen($body) > 0) {
@@ -74,7 +74,7 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
         }
     }
     // step 3: fetch article comments
-    $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments co, users u WHERE co.userid=u.userid ORDER BY co.commentid");    
+    $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments as co, users as u WHERE co.userid=u.userid ORDER BY co.commentid");    
     foreach ($commentsList as &$comment) {
         $datetime = strtotime($comment['creationTime']);
         $postedDate = date('M d, Y \a\t H:i:s', $datetime );

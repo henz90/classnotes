@@ -14,7 +14,6 @@ body {
 #header > ul{
     list-style-type: none;
     display: inline;
-    overflow: hidden;
     border: 4px solid black;
     background-color: whitesmoke;
     color: black;
@@ -29,8 +28,8 @@ body {
 #class {
     border: 4px solid black;
     background-color: gold;
-    margin: 2em;
-    padding: 2em;
+    margin: 1em;
+    padding: 1em;
     width: auto;
 }
 
@@ -53,6 +52,11 @@ body {
     margin-left: 16em;
     background-color: goldenrod;
     padding: 0.5em 0 0.5em 1em;
+}
+
+.commentBody {
+    border: 1px solid black;
+    background-color: whitesmoke;
 }
 
 /* 
