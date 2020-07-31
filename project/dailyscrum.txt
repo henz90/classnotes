@@ -104,6 +104,6 @@ YYYY/MM/DD  - NAME
 3.	Comments showing on each webpage
 
 2020/07/31 - NORMAN
-1.	
-2.  
-3.	
+1.	Stuck on Lessons
+2.  Continuing Lessons  
+3.	I have an idea about it now. Hopefully it works

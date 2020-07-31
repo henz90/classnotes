@@ -15,6 +15,8 @@
 
         });
     </script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({selector:'textarea'});</script>
 {% endblock %}
 
 {% block content %}
@@ -28,15 +30,15 @@
     {% endif %}
 
     <form method="post" class="userForm">
-        <label for="classinputid">Class ID</label>
-        <input type="text" name="classinputid" id="classinputid" value="{{c.classid}}">
-        <label for="year">Choose year</label>
-        <select name="year" value="{{c.year}}" id="lesson_year">
-            <option value="2020">2020</option>
-        </select>
-        <select name="semester" value="{{c.semester}}" id="lesson_semester">
-            <option value="Spring">Spring</option>
-        </select>
+        <input type="hidden" name="classinputid" id="classinputid" value="{{c.classid}}">
+
+        <label for="title">Lesson Name</label>
+        <input type="text" name="title" value="{{c.title}}" placeholder="Drying 101">
+
+        <label for="body">Body</label>
+        <textarea name="body" cols="60" rows="10" value="{{c.body}}" placeholder="To dry is to go from grape to raisin"></textarea>
+
+        <input type="submit" value="Add Lesson">
     </form>
 
 {% endblock %}
