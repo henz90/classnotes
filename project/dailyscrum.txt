@@ -97,3 +97,13 @@ YYYY/MM/DD  - NAME
 1.	Reworking Lessons
 2.  Trying to make lessons work
 3.	Getting used to using the libraries
+
+2020/07/31 - HENRY
+1.	Not much completed
+2.	WIP
+3.	Comments showing on each webpage
+
+2020/07/31 - NORMAN
+1.	
+2.  
+3.	
