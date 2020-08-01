@@ -63,13 +63,20 @@ body {
 }
 
 #footer {
+    border: 4px solid black;
+    border-radius: 30px;
     margin-left: 17.5em;
     background-color: goldenrod;
     padding: 0.5em 0 0.5em 1em;
 }
 
+.comments {
+    background-color: black;
+}
+
 .commentBody {
-    border: 1px solid black;
+    border: 2px solid black;
+    padding: 0.5em;
     background-color: whitesmoke;
     margin: 0.5em;
 }
