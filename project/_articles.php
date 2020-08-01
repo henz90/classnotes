@@ -73,8 +73,8 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
             ]);
         }
     }
-    // step 3: fetch article comments   //  FIXME: Creates 6 times the number of comments.... why?
-    $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments as co, users as u, classes as cl WHERE co.userid = u.userid AND co.articleid = %d ORDER BY co.commentid", $args['id']);
+    // step 3: fetch article comments
+    $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments as co, users as u WHERE co.userid = u.userid AND co.articleid = %d ORDER BY co.commentid", $args['id']);
     foreach ($commentsList as &$comment) {
         $datetime = strtotime($comment['creationTime']);
         $postedDate = date('M d, Y \a\t H:i:s', $datetime );

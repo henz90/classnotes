@@ -28,12 +28,13 @@
         <div class="comments">
             {% for co in commentsList %}
             <div class="commentBody">
-                <hr>
                 <span class="commentAuthorInfo"><a href="/profile/{{co.userid}}">{{co.username}}</a> said on {{co.date}}</span>
                 <hr>
                 <div>{{co.body}}</div>
             </div>
             {% endfor %}
+        {% else %}
+            <span>Be the first to leave a comment!</span>
         {% endif %}
         </div>
         <p><a href="/">Back to Home</a></p>
