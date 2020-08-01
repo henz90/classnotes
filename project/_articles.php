@@ -52,7 +52,7 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
             . "FROM classes as cl, users as u WHERE cl.userid = u.userid AND cl.classid = %d", $args['id']);
     if (!$article) { // TODO: use Slim's default 404 page instead of our custom one
         $response = $response->withStatus(404);
-        return $this->view->render($response, 'article_not_found.html.twig');
+        return $this->view->render($response, 'error_internal.html.twig'); //   FIXME: Create and change to article_not_found.html.twig
     }
     // step 2: handle comment submission if there is one
     if ($request->getMethod() == "POST" ) {
@@ -73,8 +73,8 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
             ]);
         }
     }
-    // step 3: fetch article comments   //FIXME: Needs class.classid = comment.articleid
-    $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments as co, users as u, classes as cl WHERE co.userid=u.userid AND co.articleid=cl.classid ORDER BY co.commentid");
+    // step 3: fetch article comments   //  FIXME: Creates 6 times the number of comments.... why?
+    $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments as co, users as u, classes as cl WHERE co.userid = u.userid AND co.articleid = %d ORDER BY co.commentid", $args['id']);
     foreach ($commentsList as &$comment) {
         $datetime = strtotime($comment['creationTime']);
         $postedDate = date('M d, Y \a\t H:i:s', $datetime );

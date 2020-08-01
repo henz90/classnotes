@@ -28,9 +28,9 @@
         <div class="comments">
             {% for co in commentsList %}
             <div class="commentBody">
-                </hr>
+                <hr>
                 <span class="commentAuthorInfo"><a href="/profile/{{co.userid}}">{{co.username}}</a> said on {{co.date}}</span>
-                </hr>
+                <hr>
                 <div>{{co.body}}</div>
             </div>
             {% endfor %}
