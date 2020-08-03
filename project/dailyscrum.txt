@@ -114,6 +114,6 @@ YYYY/MM/DD  - NAME
 3.  
 
 2020/08/03 - NORMAN
-1.	
-2.  
-3.	
+1.	Updated Lessons
+2.  Continuing Lessons
+3.	Post form on lessons not working correctly.

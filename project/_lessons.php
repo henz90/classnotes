@@ -42,7 +42,7 @@ $app->post('/create_lesson', function ($request, $response, $args) {
     }
     
     if ($errorList) {
-        return $this->view->render($response, 'create_class.html.twig',
+        return $this->view->render($response, 'create_lesson.html.twig',
                 [ 'errorList' => $errorList, 'c' => ['title' => $title, 'body' => $body ]  ]);
     } else {
         $authorId = $_SESSION['user']['userid'];
