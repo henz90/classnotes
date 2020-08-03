@@ -13,6 +13,13 @@
         {% if userSession['userid'] == a.userid %} <!-- FIXME: Need to impliment system to allow user to change body -->
             <b>Edit Class</b>
         {% endif %}
+        <form method="get" action="/create_lesson/{{a.classid}}" >
+            <input type="submit" value="Add Lesson">
+        </form>
+        <p><a href="/">Back to Home</a></p>
+    </div>
+    {% if commentsList %}
+        <div class="comments">
         {% if userSession %}
             <div class="commentForm">
                 <form method="post">
@@ -23,13 +30,8 @@
                 <input type="submit" value="Add Comment">
                 </form>
             </div>
-            <form method="get" action="/create_lesson/{{a.classid}}" >
-                <input type="submit" value="Add Lesson">
-            </form>
         {% endif %}
-        {% if commentsList %}
-        <div class="comments">
-            {% for co in commentsList %}
+        {% for co in commentsList %}
             <div class="commentBody">
                 <span class="commentAuthorInfo"><a href="/profile/{{co.userid}}">{{co.username}}</a> said on {{co.date}}</span>
                 <hr>
@@ -38,8 +40,6 @@
             {% endfor %}
         {% else %}
             <span>Be the first to leave a comment!</span>
-        {% endif %}
         </div>
-        <p><a href="/">Back to Home</a></p>
-    </div>
+    {% endif %}
 {% endblock %}
