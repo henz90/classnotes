@@ -15,12 +15,13 @@
                 <input type="submit" value="Edit Class">
             </form>
         {% endif %}
+        {% if userSession %}
         <form method="get" action="/create_lesson/{{a.classid}}" >
             <input type="submit" value="Add Lesson">
         </form>
-        <p><a href="/">Back to Home</a></p>
+        {% endif %}
+
     </div>
-    {% if commentsList %}
         <div class="comments">
         {% if userSession %}
             <div class="commentForm">
@@ -32,16 +33,18 @@
                 <input type="submit" value="Add Comment">
                 </form>
             </div>
-        {% endif %}
+        {% if commentsList %}
         {% for co in commentsList %}
             <div class="commentBody">
                 <span class="commentAuthorInfo"><a href="/profile/{{co.userid}}">{{co.username}}</a> said on {{co.date}}</span>
                 <hr>
                 <div>{{co.body}}</div>
             </div>
-            {% endfor %}
         {% else %}
             <span>Be the first to leave a comment!</span>
+        {% endfor %}
+        {% endif %}
         </div>
+        <p><a href="/">Back to Home</a></p>
     {% endif %}
 {% endblock %}
