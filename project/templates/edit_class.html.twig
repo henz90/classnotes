@@ -17,29 +17,16 @@
         <form method="post" id="classForm">
             <label for="body">Class Description:</label>
             </br>
-            <textarea name="body" cols="60" rows="10">{{c.body}}</textarea>
+            <textarea name="body">{{a.body}}</textarea>
             </br>
             <input type="submit" value="Save Edit">
+            <input type="submit" value="Delete">
         </form>
+        <br>
         {% endif %}
-        <form method="get" action="/create_lesson/{{a.classid}}" >
-            <input type="submit" value="Add Lesson">
-        </form>
-        <p><a href="/">Back to Home</a></p>
     </div>
     {% if commentsList %}
         <div class="comments">
-        {% if userSession %}
-            <div class="commentForm">
-                <form method="post">
-                Add your Comments:
-                </br>
-                <textarea name="body">{{c.body}}</textarea>
-                </br>
-                <input type="submit" value="Add Comment">
-                </form>
-            </div>
-        {% endif %}
         {% for co in commentsList %}
             <div class="commentBody">
                 <span class="commentAuthorInfo"><a href="/profile/{{co.userid}}">{{co.username}}</a> said on {{co.date}}</span>

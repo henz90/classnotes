@@ -93,16 +93,11 @@ body {
     background-color: whitesmoke;
     margin-right: 16em;
     padding: 1em;
+    width: auto;
 }
 
 .comments {
-    float: right;
-    position: absolute;
     background-color: black;
-    padding: 1em;
-    margin-right: 1em;
-    top: 15em;
-    right: 1em;
 }
 
 .commentForm {
@@ -113,7 +108,6 @@ body {
     border: 2px solid black;
     padding: 0.25em;
     background-color: whitesmoke;
-    width: 11em;
 }
 
 h1 {

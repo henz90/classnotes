@@ -100,7 +100,6 @@ $app->map(['GET', 'POST'],'/edit_class/{id:[0-9]+}', function ($request, $respon
             $response = $response->withStatus(403);
             return $this->view->render($response, 'error_access_denied.html.twig');
         }
-        $authorId = $_SESSION['user']['userid'];
         $body = $request->getParam('body');
         // TODO: we could check other things, like banned words
         if (strlen($body) > 0) {
