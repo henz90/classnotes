@@ -107,3 +107,13 @@ YYYY/MM/DD  - NAME
 1.	Stuck on Lessons
 2.  Continuing Lessons  
 3.	I have an idea about it now. Hopefully it works
+
+2020/08/03 - HENRY
+1.	Updated CSS // Started Editing Class
+2.	
+3.  
+
+2020/08/03 - NORMAN
+1.	
+2.  
+3.	
