@@ -45,7 +45,7 @@ $app->post('/create_class', function ($request, $response, $args) {
     }
 });
 
-    //  VIEW CLASS //
+    //  VIEW CLASS
 $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $args) {
     // step 1: fetch article and author info
     $article = DB::queryFirstRow("SELECT cl.classid, cl.classname, cl.semester, cl.year, cl.userid, cl.level, cl.body, u.username "
@@ -82,4 +82,41 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
     }
     //
     return $this->view->render($response, 'class.html.twig', ['a' => $article, 'commentsList' => $commentsList]);
+});
+
+    // EDIT CLASS
+$app->map(['GET', 'POST'],'/edit_class/{id:[0-9]+}', function ($request, $response, $args) {
+    // step 1: fetch article and author info
+    $article = DB::queryFirstRow("SELECT cl.classid, cl.classname, cl.semester, cl.year, cl.userid, cl.level, cl.body, u.username "
+            . "FROM classes as cl, users as u WHERE cl.userid = u.userid AND cl.classid = %d", $args['id']);
+    if (!$article) { // TODO: use Slim's default 404 page instead of our custom one
+        $response = $response->withStatus(404);
+        return $this->view->render($response, 'error_internal.html.twig'); //   FIXME: Create and change to article_not_found.html.twig
+    }
+    // step 2: handle comment submission if there is one
+    if ($request->getMethod() == "POST" ) {
+        // is user authenticated?
+        if (!isset($_SESSION['user'])) { // refuse if user not logged in
+            $response = $response->withStatus(403);
+            return $this->view->render($response, 'error_access_denied.html.twig');
+        }
+        $authorId = $_SESSION['user']['userid'];
+        $body = $request->getParam('body');
+        // TODO: we could check other things, like banned words
+        if (strlen($body) > 0) {
+            DB::update('classes',
+                ['body' => $body],
+                "classid=%d", $args['id']
+            );
+        }
+    }
+    // step 3: fetch article comments
+    $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments as co, users as u WHERE co.userid = u.userid AND co.articleid = %d ORDER BY co.commentid", $args['id']);
+    foreach ($commentsList as &$comment) {
+        $datetime = strtotime($comment['creationTime']);
+        $postedDate = date('M d, Y \a\t H:i:s', $datetime );
+        $comment['postedDate'] = $postedDate;
+    }
+    //
+    return $this->view->render($response, 'edit_class.html.twig', ['a' => $article, 'commentsList' => $commentsList]);
 });

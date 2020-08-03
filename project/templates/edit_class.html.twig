@@ -1,19 +1,26 @@
 {% extends "master.html.twig" %}
 
-{% block title %}{{a.classname}}{% endblock %}
+{% block title %}Edit {{a.classname}}{% endblock %}
+
+{% block head %}
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({selector:'textarea'});</script>
+{% endblock %}
 
 {% block content %}
     <div id="centerArticle">
         <h1 class="centered">{{a.classname}}</h1>
         <hr>
         <i>Posted by {{a.username}}</i>  
-        <hr>
-        <div class="body">{{a.body|raw}}</div>
-        <hr>
-        {% if userSession['userid'] == a.userid %} <!-- FIXME: Need to impliment system to allow user to change body -->
-            <form method="get" action="/edit_class/{{a.classid}}" >
-                <input type="submit" value="Edit Class">
-            </form>
+            <hr>
+        {% if userSession['userid'] == a.userid %}
+        <form method="post" id="classForm">
+            <label for="body">Class Description:</label>
+            </br>
+            <textarea name="body" cols="60" rows="10">{{c.body}}</textarea>
+            </br>
+            <input type="submit" value="Save Edit">
+        </form>
         {% endif %}
         <form method="get" action="/create_lesson/{{a.classid}}" >
             <input type="submit" value="Add Lesson">
