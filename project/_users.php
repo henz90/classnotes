@@ -120,7 +120,7 @@ $app->post('/login', function ($request, $response, $args)  use ($log){
         unset($record['password']); // for security reasons remove password from session
         $_SESSION['user'] = $record; // remember user logged in
         $log ->debug(sprintf("Login successful for username %s, uid=%d, from %s", $username, $record['userid'], $_SERVER['REMOTE_ADDR']));
-        return $this->view->render($response, '/', ['userSession' => $_SESSION['user']]);
+        return $this->view->render($response, 'login_success.html.twig', ['userSession' => $_SESSION['user']]);
     }
 });
 
