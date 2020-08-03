@@ -110,7 +110,7 @@ YYYY/MM/DD  - NAME
 
 2020/08/03 - HENRY
 1.	Updated CSS // Started Editing Class
-2.	
+2.	Allow user to edit Classes // Comments
 3.  
 
 2020/08/03 - NORMAN
