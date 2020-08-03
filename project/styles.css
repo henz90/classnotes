@@ -90,6 +90,7 @@ body {
 .body {
     background-color: whitesmoke;
     margin-right: 1em;
+    padding-bottom: 1em;
 }
 
 .comments {
