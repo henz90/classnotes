@@ -8,8 +8,11 @@
         <hr>
         <i>Posted by {{a.username}}</i>  
         <hr>
-        <div>{{a.body|raw}}</div>
+        <div class="body">{{a.body|raw}}</div>
         <hr>
+        {% if userSession['userid'] == a.userid %} <!-- FIXME: Need to impliment system to allow user to change body -->
+            <b>Edit Class</b>
+        {% endif %}
         {% if userSession %}
             <div class="commentForm">
                 <form method="post">
