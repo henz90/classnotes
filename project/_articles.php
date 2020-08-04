@@ -123,3 +123,23 @@ $app->map(['GET', 'POST'],'/edit_class/{id:[0-9]+}', function ($request, $respon
     //
     return $this->view->render($response, 'edit_class.html.twig', ['a' => $article, 'commentsList' => $commentsList]);
 });
+
+    //  DELETE CLASS
+$app->map(['GET', 'POST'],'/delete_class/{id:[0-9]+}', function ($request, $response, $args) {
+    // step 1: fetch article and author info
+    $article = DB::queryFirstRow("SELECT cl.classid, cl.classname, cl.semester, cl.year, cl.userid, cl.level, cl.body, u.username "
+            . "FROM classes as cl, users as u WHERE cl.userid = u.userid AND cl.classid = %d", $args['id']);
+    
+    if (!$article) { // TODO: use Slim's default 404 page instead of our custom one
+        $response = $response->withStatus(404);
+        return $this->view->render($response, 'article_not_found.html.twig'); 
+    }
+    if ($request->getMethod() == "POST" ) {
+        DB::delete('classes',
+                "classid=%d", $args['id']
+            );
+            return $this->view->render($response, 'class_deleted.html.twig');
+    }
+    //
+    return $this->view->render($response, 'delete_class.html.twig', ['a' => $article]);
+});

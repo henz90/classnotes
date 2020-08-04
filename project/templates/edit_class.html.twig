@@ -19,13 +19,10 @@
             <textarea name="body">{{a.body}}</textarea>
             </br>
             <input type="submit" value="Save Edit">
-            <button onClick="window.location = '/admin/class/delete/{{id}}';">
         </form>
-        <form action="/admin/class/delete/{{id}}">
-            <input type="submit" value="Delete"> <!-- FIXME: Needs to actually delete -->
-        </form>
-
-        
+        <form action="/delete_class/{{a.classid}}">
+            <input type="submit" value="Delete">
+        </form>        
         <br>
         {% endif %}
     </div>
