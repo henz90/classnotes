@@ -155,3 +155,21 @@ CSS for user-related forms
 /* 
 end of CSS for user-related forms 
 */
+
+/*
+CSS for sample lessons after creating lesson
+*/
+
+#lessonsample {
+    background-color: white;
+    margin: 1em;
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 1em;
+    min-width: 500px;
+    width: 60%;
+}
+
+/*
+End of sample lesson CSS
+*/
