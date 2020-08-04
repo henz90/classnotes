@@ -36,8 +36,8 @@ $app->post('/create_lesson', function ($request, $response, $args) {
             . "spaces, dots, underscores, apostrophies, or minus sign.");
         // keep the title even if invalid
     }
-    if (strlen($body) < 2 || strlen($body) > 1000) {
-        array_push($errorList, "Body must be 2-1000 characters long");
+    if (strlen($body) < 2 || strlen($body) > 10000) {
+        array_push($errorList, "Body must be 2-10000 characters long");
         // keep the body even if invalid
     }
     
