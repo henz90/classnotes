@@ -120,7 +120,7 @@ YYYY/MM/DD  - NAME
 
 2020/08/04 - HENRY
 1.	User can edit class completed // CSS
-2.	Allow user to delete Classes // Comments
+2.	Allow user to delete Classes // Editing/Delete Comments
 3.  How do I block off certain pages users shouldn't see?
 
 2020/08/04 - NORMAN

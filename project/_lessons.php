@@ -46,7 +46,6 @@ $app->post('/create_lesson', function ($request, $response, $args) {
                 [ 'errorList' => $errorList, 'c' => ['title' => $title, 'body' => $body ]  ]);
     } else {
         $authorId = $_SESSION['user']['userid'];
-
         DB::insert('lessons', ['title' => $title, 'body' => $body, 'classid' => $classid, 'userid' => $authorId, 'level' => 0]);
         $lessonId = DB::insertId();
         $lesson = DB::queryFirstRow("SELECT l.lessonid, l.title, l.body "
