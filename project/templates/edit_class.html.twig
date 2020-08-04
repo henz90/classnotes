@@ -15,13 +15,17 @@
             <hr>
         {% if userSession['userid'] == a.userid %}
         <form method="post" id="classForm">
-            <label for="body">Class Description:</label>
-            </br>
+            <p><label for="body">Class Description:</label></p>
             <textarea name="body">{{a.body}}</textarea>
             </br>
             <input type="submit" value="Save Edit">
+            <button onClick="window.location = '/admin/class/delete/{{id}}';">
+        </form>
+        <form action="/admin/class/delete/{{id}}">
             <input type="submit" value="Delete"> <!-- FIXME: Needs to actually delete -->
         </form>
+
+        
         <br>
         {% endif %}
     </div>
@@ -34,6 +38,7 @@
                 <div>{{co.body}}</div>
             </div>
             {% endfor %}
+        </div>
         {% else %}
             <span>Be the first to leave a comment!</span>
         </div>
