@@ -10,7 +10,7 @@
         <hr>
         <div class="body">{{a.body|raw}}</div>
         <hr>
-        {% if userSession['userid'] == a.userid %} <!-- FIXME: Need to impliment system to allow user to change body -->
+        {% if userSession['userid'] == a.userid %}
             <form method="get" action="/edit_class/{{a.classid}}" >
                 <input type="submit" value="Edit Class">
             </form>

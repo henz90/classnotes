@@ -50,9 +50,12 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
     // step 1: fetch article and author info
     $article = DB::queryFirstRow("SELECT cl.classid, cl.classname, cl.semester, cl.year, cl.userid, cl.level, cl.body, u.username "
             . "FROM classes as cl, users as u WHERE cl.userid = u.userid AND cl.classid = %d", $args['id']);
+
+    //   FIXME: Create and change to article_not_found.html.twig
+    
     if (!$article) { // TODO: use Slim's default 404 page instead of our custom one
         $response = $response->withStatus(404);
-        return $this->view->render($response, 'error_internal.html.twig'); //   FIXME: Create and change to article_not_found.html.twig
+        return $this->view->render($response, 'error_internal.html.twig'); 
     }
     // step 2: handle comment submission if there is one
     if ($request->getMethod() == "POST" ) {
@@ -89,9 +92,12 @@ $app->map(['GET', 'POST'],'/edit_class/{id:[0-9]+}', function ($request, $respon
     // step 1: fetch article and author info
     $article = DB::queryFirstRow("SELECT cl.classid, cl.classname, cl.semester, cl.year, cl.userid, cl.level, cl.body, u.username "
             . "FROM classes as cl, users as u WHERE cl.userid = u.userid AND cl.classid = %d", $args['id']);
+
+    //   FIXME: Create and change to article_not_found.html.twig
+
     if (!$article) { // TODO: use Slim's default 404 page instead of our custom one
         $response = $response->withStatus(404);
-        return $this->view->render($response, 'error_internal.html.twig'); //   FIXME: Create and change to article_not_found.html.twig
+        return $this->view->render($response, 'error_internal.html.twig');
     }
     // step 2: handle comment submission if there is one
     if ($request->getMethod() == "POST" ) {
