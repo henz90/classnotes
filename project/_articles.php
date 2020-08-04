@@ -25,9 +25,9 @@ $app->post('/create_class', function ($request, $response, $args) {
     //  Sanitize the Body:
     $body = strip_tags($body, "<p><ul><li><em><strong><i><b><ol><h3><h4><h5><span>");
     $errorList = array();
-    if (preg_match('/^[a-zA-Z0-9\ \\._\'"-]{2,100}$/', $name) != 1) { // Reg check on classname
+    if (preg_match('/^[a-zA-Z0-9\ \\,\\._\'"-]{2,100}$/', $name) != 1) { // Reg check on classname
         array_push($errorList, "Title must be 2-100 characters long and consist of letters, digits, "
-            . "spaces, dots, underscores, apostrophies, or minus sign.");
+            . "spaces, dots, commas, underscores, apostrophies, or minus sign.");
         // keep the title even if invalid
     }
     if (strlen($body) < 2 || strlen($body) > 1000) {
@@ -90,12 +90,14 @@ $app->map(['GET', 'POST'],'/edit_class/{id:[0-9]+}', function ($request, $respon
     // step 1: fetch article and author info
     $article = DB::queryFirstRow("SELECT cl.classid, cl.classname, cl.semester, cl.year, cl.userid, cl.level, cl.body, u.username "
             . "FROM classes as cl, users as u WHERE cl.userid = u.userid AND cl.classid = %d", $args['id']);
-
-    //   FIXME: Create and change to article_not_found.html.twig
+    
+    if($article['userid'] != $_SESSION['user']['userid']){
+        return $this->view->render($response, 'article_not_found.html.twig');
+    }
 
     if (!$article) { // TODO: use Slim's default 404 page instead of our custom one
         $response = $response->withStatus(404);
-        return $this->view->render($response, 'error_internal.html.twig');
+        return $this->view->render($response, 'article_not_found.html.twig');
     }
     
     // step 2: fetch article comments

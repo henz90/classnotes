@@ -128,3 +128,13 @@ YYYY/MM/DD  - NAME
 1.	Lessons continued. Adds to database.
 2.  Lesson success handling. Also viewing lessons on the class page.
 3.	Success handling not quite there.
+
+2020/08/05 - HENRY
+1.	User can delete/edit class completed // Changed which pages can be viewed by authorized users (authors)
+2.	
+3.  Editing: Updates but doesn't show the edited content
+
+2020/08/05 - NORMAN
+1.	
+2.  
+3.	
