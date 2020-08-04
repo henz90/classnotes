@@ -50,6 +50,11 @@ $app->post('/create_lesson', function ($request, $response, $args) {
         $lessonId = DB::insertId();
         $lesson = DB::queryFirstRow("SELECT l.lessonid, l.title, l.body "
         . "FROM lessons as l WHERE l.lessonid = %d", $lessonId);
+
+        $fullBodyNoTags = strip_tags($lesson['body']);
+        $bodyPreview = substr(strip_tags($fullBodyNoTags), 0, 100);
+        $bodyPreview .= (strlen($fullBodyNoTags) > strlen($bodyPreview)) ? "..." : "";
+        $lesson['body'] = $bodyPreview;
         return $this->view->render($response, 'addlesson_success.html.twig', ['l' => $lesson]);
     }
 });

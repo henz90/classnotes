@@ -3,12 +3,11 @@
 {% block title %}Main Page{% endblock %}
 
 {% block content %}
-    {% for l in list %}
-    <div>
-        <p>Lesson added!</p>
-        <h1><a href="/lesson/{{l.lessonid}}">{{l.title}}</a></h1>
-        <p>{{l.body}}</p>
+    <div id="">
+        <h2>Lesson added!</h2>
+        <div id="lessonsample">
+            <h1><a href="/lesson/{{l.lessonid}}">{{l.title}}</a></h1>
+            <p>{{l.body}}</p>
+        </div>
     </div>
-    </br>
-    {% endfor %}
 {% endblock %}
