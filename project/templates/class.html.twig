@@ -26,25 +26,27 @@
         {% if userSession %}
             <div class="commentForm">
                 <form method="post">
-                Add your Comments:
-                </br>
-                <textarea name="body" col="60" row="20">{{c.body}}</textarea>
+                <p>Add your Comments:</p>
+                <textarea name="body" cols="100" rows="5">{{c.body}}</textarea>
                 </br>
                 <input type="submit" value="Add Comment">
                 </form>
             </div>
-        {% if commentsList %}
-        {% for co in commentsList %}
-            <div class="commentBody">
-                <span class="commentAuthorInfo"><a href="/profile/{{co.userid}}">{{co.username}}</a> said on {{co.date}}</span>
-                <hr>
-                <div>{{co.body}}</div>
-            </div>
+            {% if commentsList %}
+                {% for co in commentsList %}
+                    <div class="commentBody">
+                        <span class="commentAuthorInfo"><a href="/profile/{{co.userid}}">{{co.username}}</a> said on {{co.date}}</span>
+                        <hr>
+                        <div>{{co.body}}</div>
+                    </div>
+                {% else %}
+                    <span>Be the first to leave a comment!</span>
+                {% endfor %}
+            {% endif %}
         {% else %}
-            <span>Be the first to leave a comment!</span>
-        {% endfor %}
+                <p><a href="/login">Login</a> to see comments!</p>
         {% endif %}
         </div>
+        </br>
         <p><a href="/">Back to Home</a></p>
-    {% endif %}
 {% endblock %}
