@@ -12,8 +12,8 @@ $app->get('/create_lesson', function ($request, $response, $args) {
     return $this->view->render($response, 'create_lesson.html.twig');
 });
 
-//WIP
-// creating lesson AJAX
+// consult PHP slim documentation
+// Handling the redirect
 $app->get('/create_lesson/[{classid}]', function ($request, $response, $args) {
     $classid = isset($args['classid']) ? $args['classid'] : "";
     $id = DB::queryFirstRow("SELECT classid FROM classes WHERE classid=%s", $classid);
@@ -46,7 +46,11 @@ $app->post('/create_lesson', function ($request, $response, $args) {
                 [ 'errorList' => $errorList, 'c' => ['title' => $title, 'body' => $body ]  ]);
     } else {
         $authorId = $_SESSION['user']['userid'];
+
         DB::insert('lessons', ['title' => $title, 'body' => $body, 'classid' => $classid, 'userid' => $authorId, 'level' => 0]);
-        return $this->view->render($response, 'addlesson_success.html.twig');
+        $lessonId = DB::insertId();
+        $lesson = DB::queryFirstRow("SELECT l.lessonid, l.title, l.body "
+        . "FROM lessons as l WHERE l.lessonid = %d", $lessonId);
+        return $this->view->render($response, 'addlesson_success.html.twig', ['l' => $lesson]);
     }
 });
