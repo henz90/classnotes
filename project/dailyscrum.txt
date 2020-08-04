@@ -124,6 +124,6 @@ YYYY/MM/DD  - NAME
 3.  How do I block off certain pages users shouldn't see?
 
 2020/08/04 - NORMAN
-1.	
-2.  
-3.	
+1.	Lessons continued. Adds to database.
+2.  Lesson success handling. Also viewing lessons on the class page.
+3.	Success handling not quite there.
