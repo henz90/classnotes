@@ -97,7 +97,15 @@ $app->map(['GET', 'POST'],'/edit_class/{id:[0-9]+}', function ($request, $respon
         $response = $response->withStatus(404);
         return $this->view->render($response, 'error_internal.html.twig');
     }
-    // step 2: handle comment submission if there is one
+    
+    // step 2: fetch article comments
+    $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments as co, users as u WHERE co.userid = u.userid AND co.articleid = %d ORDER BY co.commentid", $args['id']);
+    foreach ($commentsList as &$comment) {
+        $datetime = strtotime($comment['creationTime']);
+        $postedDate = date('M d, Y \a\t H:i:s', $datetime );
+        $comment['postedDate'] = $postedDate;
+    }
+    // step 3: handle comment submission if there is one
     if ($request->getMethod() == "POST" ) {
         // is user authenticated?
         if (!isset($_SESSION['user'])) { // refuse if user not logged in
@@ -111,16 +119,10 @@ $app->map(['GET', 'POST'],'/edit_class/{id:[0-9]+}', function ($request, $respon
                 ['body' => $body],
                 "classid=%d", $args['id']
             );
+            //  FIXME:  Updates but doesn't return page with edited information
+            return $this->view->render($response, 'class.html.twig', ['a' => $article, 'commentsList' => $commentsList]);
         }
     }
-    // step 3: fetch article comments
-    $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments as co, users as u WHERE co.userid = u.userid AND co.articleid = %d ORDER BY co.commentid", $args['id']);
-    foreach ($commentsList as &$comment) {
-        $datetime = strtotime($comment['creationTime']);
-        $postedDate = date('M d, Y \a\t H:i:s', $datetime );
-        $comment['postedDate'] = $postedDate;
-    }
-    //
     return $this->view->render($response, 'edit_class.html.twig', ['a' => $article, 'commentsList' => $commentsList]);
 });
 

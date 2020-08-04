@@ -122,6 +122,7 @@ YYYY/MM/DD  - NAME
 1.	User can edit class completed // CSS
 2.	Allow user to delete Classes // Editing/Delete Comments
 3.  How do I block off certain pages users shouldn't see?
+    Editing: Updates but doesn't show the edited content
 
 2020/08/04 - NORMAN
 1.	Lessons continued. Adds to database.

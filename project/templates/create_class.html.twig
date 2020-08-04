@@ -16,26 +16,20 @@
         {% endfor %}
         </ul>
     {% endif %}
-
     <form method="post" id="classForm">
-        <label for="classname">Class Name:</label>
-        <input type="text" name="classname" value="{{c.classname}}" placeholder="Class Name">
-        </br>
-        <label for="semester">Semester <i>OPTIONAL</i> :</label>
+        <p><label for="classname">Class Name:</label>
+        <input type="text" name="classname" value="{{c.classname}}" placeholder="Class Name"></p>
+        <p><label for="semester">Semester <i>OPTIONAL</i> :</label>
         <select name="semester" value="{{c.semester}}">
             <option value="Spring">Spring</option>
             <option value="Summer">Summer</option>
             <option value="Fall">Fall</option>
             <option value="Winter">Winter</option>
-        </select>
-        </br>
-        <label for="year">Year:</label>
-        <input type="number" value="{{c.year}}" name="year">
-        </br>
-        <label for="body">Class Description:</label>
-        </br>
+        </select></p>
+        <p><label for="year">Year:</label>
+        <input type="number" value="{{c.year}}" name="year"></p>
+        <p><label for="body">Class Description:</label></p>
         <textarea name="body" cols="60" rows="10">{{c.body}}</textarea>
-        </br>
-        <input type="submit" value="Add Class">
+        <p><input type="submit" value="Add Class"></p>
     </form>
 {% endblock %}
