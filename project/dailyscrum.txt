@@ -135,6 +135,6 @@ YYYY/MM/DD  - NAME
 3.  Editing: Updating the page doesn't show the newly edited content
 
 2020/08/05 - NORMAN
-1.	
-2.  
-3.	
+1.	Lessons success page, lessons
+2.  Lesson view page, lessons on class page, lessons permissions, image uploading/viewing via lessons.
+3.	Uploading/handling images.

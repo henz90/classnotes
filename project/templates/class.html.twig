@@ -2,6 +2,11 @@
 
 {% block title %}{{a.classname}}{% endblock %}
 
+{% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{% endblock %}
+
 {% block content %}
     <div id="centerArticle">
         <h1 class="centered">{{a.classname}}</h1>
