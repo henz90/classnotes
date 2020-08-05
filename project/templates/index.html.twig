@@ -7,7 +7,7 @@
     <div class="class">
         <h1><a href="/class/{{c.classid}}">{{c.classname}}</a></h1>
         <span>Created by <a href="/profile/{{c.userid}}">{{c.username}}</a></span>
-        <p>{{c.body}}</p>
+        <p>{{c.body|raw}}</p>
     </div>
     <br>
     {% endfor %}
