@@ -26,7 +26,7 @@ $app->post('/create_class', function ($request, $response, $args) {
     $body = strip_tags($body, "<p><ul><li><em><strong><i><b><ol><h3><h4><h5><span>");
     $errorList = array();
     if (preg_match('/^[a-zA-Z0-9\ \\,\\._\'"-]{2,100}$/', $name) != 1) { // Reg check on classname
-        array_push($errorList, "Title must be 2-100 characters long and consist of letters, digits, "
+        array_push($errorList, "Class name must be 2-100 characters long and consist of letters, digits, "
             . "spaces, dots, commas, underscores, apostrophies, or minus sign.");
         // keep the title even if invalid
     }
@@ -104,7 +104,7 @@ $app->map(['GET', 'POST'],'/edit_class/{id:[0-9]+}', function ($request, $respon
     // step 2: fetch article comments
     $commentsList = DB::query("SELECT co.commentid, u.username, co.date, co.body FROM comments as co, users as u WHERE co.userid = u.userid AND co.articleid = %d ORDER BY co.commentid", $args['id']);
     foreach ($commentsList as &$comment) {
-        $datetime = strtotime($comment['creationTime']);
+        $datetime = strtotime($comment['date']);
         $postedDate = date('M d, Y \a\t H:i:s', $datetime );
         $comment['postedDate'] = $postedDate;
     }

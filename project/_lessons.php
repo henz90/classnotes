@@ -58,3 +58,26 @@ $app->post('/create_lesson', function ($request, $response, $args) {
         return $this->view->render($response, 'addlesson_success.html.twig', ['l' => $lesson]);
     }
 });
+
+$app->get('/lesson/{lessonid:[0-9]+}', function ($request, $response, $args) {
+
+    if (!isset($_SESSION['user'])) { // refuse if user not logged in
+        $response = $response->withStatus(403);
+        return $this->view->render($response, 'error_access_denied.html.twig');
+    }
+
+    $lessonid = isset($args['lessonid']) ? $args['lessonid'] : "";
+
+    if (!$lessonid) { 
+        //FIXME currently using article_not_found. Fix it later.
+        $response = $response->withStatus(404);
+        return $this->view->render($response, 'article_not_found.html.twig'); 
+    }
+
+    $lesson = DB::queryFirstRow("SELECT lessonid, title, body, date FROM lessons WHERE lessonid=%d", $lessonid);
+    //user id is from class and not lesson. If lesson create can be different from class then 
+    $class = DB::queryFirstRow("SELECT c.classid, c.classname, c.userid, a.username FROM classes as c, lessons as l, users as a WHERE a.userid = c.userid AND "
+    . "c.classid = l.classid AND lessonid =%d", $lessonid);
+
+    return $this->view->render($response, 'lesson.html.twig', ['l' => $lesson, 'c' => $class]);
+});
