@@ -34,6 +34,9 @@ $app->post('/create_class', function ($request, $response, $args) {
         array_push($errorList, "Body must be 2-1000 characters long");
         // keep the body even if invalid
     }
+    if($year < 1990 ) {
+        array_push($errorList, "Year must be a positive number before 1990");
+    }
     if ($errorList) {
         return $this->view->render($response, 'create_class.html.twig',
                 [ 'errorList' => $errorList, 'c' => ['classname' => $name, 'body' => $body ]  ]);
