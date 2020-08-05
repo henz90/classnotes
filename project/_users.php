@@ -131,3 +131,19 @@ $app->get('/logout', function ($request, $response, $args) use ($log){
     unset($_SESSION['user']);
     return $this->view->render($response, 'logout.html.twig', ['userSession' => null]);
 });
+
+
+    //  PROFILE
+$app->get('/profile/{id:[0-9]+}', function ($request, $response, $args) {
+    // Fetch user, class, lessons, and comments
+    $profile = DB::queryFirstRow("SELECT u.userid, u.username, u.email, u.level FROM users as u WHERE u.userid = %d", $args['id']);
+    $classlist = DB::query("SELECT cl.classid, cl.classname, cl.userid, cl.level, cl.body FROM classes as cl WHERE cl.userid = %d ORDER BY cl.classid", $args['id']);
+    $lessonlist = DB::query("SELECT l.lessonid, l.title, l.body, l.classid, l.userid, l.filepathid, l.date, l.level FROM lessons as l WHERE l.userid = %d ORDER BY l.lessonid", $args['id']);
+    $commentlist = DB::query("SELECT co.commentid, co.userid, co.date, co.body FROM comments as co WHERE co.userid = %d ORDER BY co.commentid", $args['id']);
+    if (!$profile) {
+        $response = $response->withStatus(404);
+        return $this->view->render($response, 'article_not_found.html.twig'); //    FIXME: Change to profile_not_found.html.twig
+    }
+    //  Return
+    return $this->view->render($response, 'profile.html.twig', ['u' => $profile, 'classes' => $classlist, 'lessons' => $lessonlist, 'comments' => $commentlist]);
+});  
