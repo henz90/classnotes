@@ -131,8 +131,8 @@ YYYY/MM/DD  - NAME
 
 2020/08/05 - HENRY
 1.	User can delete/edit class completed // Changed which pages can be viewed by authorized users (authors)
-2.	
-3.  Editing: Updates but doesn't show the edited content
+2.	User Profile page // New table for joining classes
+3.  Editing: Updating the page doesn't show the newly edited content
 
 2020/08/05 - NORMAN
 1.	
