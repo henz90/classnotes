@@ -5,40 +5,5 @@
 {% block content %}
     <h1>{{u.username}}'s Profile</h1>
     <hr>
-    {% if classes %}
-    <table>
-        <tr>
-            <th>Classes:</th>
-        </tr>
-        {% for cl in classes %}
-        <tr>
-            <td>{{cl.classname}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
-    {% if lessons %}
-    <table>
-        <tr>
-            <th>Lessons:</th>
-        </tr>
-        {% for l in lessons %}
-        <tr>
-            <td>{{l.title}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
-    {% if comments %}
-    <table>
-        <tr>
-            <th>Comments:</th>
-        </tr>
-        {% for co in comments %}
-        <tr>
-            <td>{{co.body}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
+    <!-- WIP -->
 {% endblock %}
