@@ -35,15 +35,6 @@ body {
     color: black;
 }
 
-#class {
-    border: 4px solid black;
-    border-radius: 30px;
-    background-color: gold;
-    margin: 0.5em;
-    padding: 0.5em;
-    width: auto;
-}
-
 #nav {
     border: 4px solid black;
     border-radius: 30px;
@@ -92,6 +83,15 @@ body {
 .body {
     background-color: whitesmoke;
     padding: 1em;
+}
+
+.class {
+    border: 4px solid black;
+    border-radius: 30px;
+    background-color: gold;
+    margin: 0.5em;
+    padding: 0.5em;
+    width: auto;
 }
 
 .comments {
