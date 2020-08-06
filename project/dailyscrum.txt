@@ -145,6 +145,6 @@ YYYY/MM/DD  - NAME
 3.  
 
 2020/08/06 - NORMAN
-1.	
-2.  
-3.	
+1.	Lessons view page skeleton. Lessons on class page skeleton.
+2.  Styling the lessons-related pages to have proper display.
+3.	Scripting things, going to have to review JS/Jquery for lessons on the class page.
