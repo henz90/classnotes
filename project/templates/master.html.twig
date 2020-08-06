@@ -9,18 +9,21 @@
     <div id="header">
         <ul>
             {% if userSession %}
-                <li><a href="/">Home</a></li>
-                <li><a href="/profile/{{userSession['userid']}}">{{userSession['username']}}'s Profile</a></li>
+                <h1>Welcome {{userSession['username']}}</h1>
             {% else %}
                 <h1>Welcome</h1>
             {% endif %}
         </ul>
     </div>
     <div id="nav">
+        <!--
         <a href="/"><img src="/images/Logo.png" id="logo" alt="Classnotes Logo" width="250" height="250"></a>
+        -->
         </br>
         <ul id="menu">
+                <li><a href="/">Home</a></li>
             {% if userSession %}
+                <li><a href="/profile/{{userSession['userid']}}">{{userSession['username']}}'s Profile</a></li>
                 <li><a href="/logout">Logout</a></li>
             {% else %}
                 <li><a href="/login">Login</a></li>
