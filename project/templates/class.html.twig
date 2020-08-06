@@ -20,6 +20,14 @@
                 <input type="submit" value="Edit Class">
             </form>
         {% endif %}
+        <div id="lessonaccordion">
+            {% for l in lessonList %}
+                <div class="lessonContainer">
+                    <a href="/lesson/{{l.lessonid}}"><h4>{{l.title}}</h4></a>
+                    <p>{{l.body|raw}}</p>
+                </div>
+            {% endfor %}
+        </div>
         {% if userSession %}
         <form method="get" action="/create_lesson/{{a.classid}}" >
             <input type="submit" value="Add Lesson">

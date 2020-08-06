@@ -85,8 +85,11 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
         $postedDate = date('M d, Y \a\t H:i:s', $datetime );    //  FIXME: Time shows as 00:00:00
         $comment['date'] = $postedDate;
     }
+    // add filepathid to query once it's implemented
+    // add level to query once it's implemented
+    $lessonList = DB::query("SELECT l.lessonid, l.title, l.body, l.userid FROM lessons as l WHERE l.classid = %d", $args['id']);
     //
-    return $this->view->render($response, 'class.html.twig', ['a' => $article, 'commentsList' => $commentsList]);
+    return $this->view->render($response, 'class.html.twig', ['a' => $article, 'commentsList' => $commentsList, 'lessonList' => $lessonList]);
 });
 
     // EDIT CLASS

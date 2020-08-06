@@ -5,8 +5,8 @@
 {% block content %}
         <ul class="breadcrumb">
             <li><a href="/">Home</a></li>
-            <li><a href="class/{{c.classid}}">{{c.classname}}</a></li>
-            <li><a href="class/{{l.lessonid}}">{{l.title}}</a></li>
+            <li><a href="/class/{{c.classid}}">{{c.classname}}</a></li>
+            <li><a href="/lesson/{{l.lessonid}}">{{l.title}}</a></li>
         </ul>
     <div id="centerArticle">
         <h1 class="centered">{{l.title}}</h1>
@@ -15,7 +15,7 @@
         <hr>
         <div class="body">{{l.body|raw}}</div>
         <hr>
-        {% if userSession['userid'] == a.userid %}
+        {% if userSession['userid'] == c.userid %}
             <form method="get" action="/edit_lesson/{{l.lessonid}}" >
                 <input type="submit" value="Edit Lesson">
             </form>
