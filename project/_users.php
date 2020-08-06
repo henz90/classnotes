@@ -146,9 +146,9 @@ $app->map(['GET', 'POST'],'/profile/{id:[0-9]+}', function ($request, $response,
     }
         //  STATE 2&3: receiving submission
     if ($profile['userid'] == $_SESSION['user']['id']) {
-        if ($profile['bio'] == NULL) {
-            $body = $request->getParam('body');
-            $body = strip_tags($body, "<p><ul><li><em><strong><i><b><ol><h3><h4><h5><span>");
+        $body = $request->getParam('body');
+        $body = strip_tags($body, "<p><ul><li><em><strong><i><b><ol><h3><h4><h5><span>");
+        if ($profile['bio'] == NULL || $profile['bio'] != $body) {  //  FIXME: Needs work, doesn't update properly
             $errorList = array();
             if (strlen($body) < 2 || strlen($body) > 1000) {
                 array_push($errorList, "Bio must be 2-1000 characters long");
@@ -164,7 +164,7 @@ $app->map(['GET', 'POST'],'/profile/{id:[0-9]+}', function ($request, $response,
             }
         }
     }
-    //  CHANGE PASSWORD
+    //  CHANGE PASSWORD // FIXME: How do I make this work?
     $pass = $request->getParam('pass');
     $pass1 = $request->getParam('pass1');
     $pass2 = $request->getParam('pass2');
@@ -187,8 +187,8 @@ $app->map(['GET', 'POST'],'/profile/{id:[0-9]+}', function ($request, $response,
         return $this->view->render($response, 'profile.html.twig',
                 [ 'errorList' => $errorList, 'u' => $profile,'classes' => $classlist, 'lessons' => $lessonlist, 'comments' => $commentlist]);
     } else {
-        return $this->view->render($response, 'profile.html.twig', ['u' => $profile,'classes' => $classlist, 'lessons' => $lessonlist, 'comments' => $commentlist]);
+        return $this->view->render($response, 'profile.html.twig', ['u' => $profile, 'classes' => $classlist, 'lessons' => $lessonlist, 'comments' => $commentlist]);
     }
     //  Return
-    return $this->view->render($response, 'profile.html.twig', ['u' => $profile,'classes' => $classlist, 'lessons' => $lessonlist, 'comments' => $commentlist]);
+    return $this->view->render($response, 'profile.html.twig', ['u' => $profile, 'classes' => $classlist, 'lessons' => $lessonlist, 'comments' => $commentlist]);
 });  

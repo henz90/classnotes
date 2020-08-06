@@ -34,23 +34,30 @@
             </form>
         {% else %}
             <div class="class">{{u.bio|raw}}</div>
+                <form method="post" id="classForm">
+                    <p><label for="body"><strong>Update your Bio:</strong></label></p>
+                    <textarea name="body" cols="60" rows="10">{{u.bio}}</textarea>
+                    <p><input type="submit" value="Update Bio"></p>
+                </form>
         {% endif %}
             <h2>Change Password:</h2>
-            <form method="post">
-                <label for="pass1">Current Password</label>
-                <br>
-                <input type="password" name="pass" placeholder="**********">
-                <br>
-                <label for="pass1">New Password</label>
-                <br>
-                <input type="password" name="pass1" placeholder="**********">
-                <br>
-                <label for="pass2">New Password (repeated)</label>
-                <br>
-                <input type="password" name="pass2" placeholder="**********">
-                <br>
-                <input type="submit" value="Change Password">
-            </form>
+            <p>
+                <form method="post">
+                    <label for="pass1">Current Password</label>
+                    <br>
+                    <input type="password" name="pass" placeholder="**********">
+                    <br>
+                    <label for="pass1">New Password</label>
+                    <br>
+                    <input type="password" name="pass1" placeholder="**********">
+                    <br>
+                    <label for="pass2">New Password (repeated)</label>
+                    <br>
+                    <input type="password" name="pass2" placeholder="**********">
+                    <br>
+                    <input type="submit" value="Change Password">
+                </form>
+            </p>
     {% else %}
         {% if u.bio == NULL %}
             <h2>No Bio created</h2>
