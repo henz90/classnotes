@@ -45,7 +45,6 @@ $app->post('/create_class', function ($request, $response, $args) {
         DB::insert('classes', ['classname' => $name, 'semester' => $semester, 'year' => $year, 'userid' => $authorId, 'level' => 0, 'body' => $body]);
         $articleId = DB::insertId();
         return $this->view->render($response, 'addclass_success.html.twig', ['id' => $articleId]);
-        //  FIXME: Possibly need to add userid and classid to joinedclasses 
     }
 });
 

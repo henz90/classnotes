@@ -138,3 +138,13 @@ YYYY/MM/DD  - NAME
 1.	Lessons success page, lessons
 2.  Lesson view page, lessons on class page, lessons permissions, image uploading/viewing via lessons.
 3.	Uploading/handling images.
+
+2020/08/06 - HENRY
+1.	Profile page was created but not finalized // CSS overhaul
+2.	
+3.  
+
+2020/08/06 - NORMAN
+1.	
+2.  
+3.	
