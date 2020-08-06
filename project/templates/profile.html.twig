@@ -2,8 +2,60 @@
 
 {% block title %}{{u.username}}{% endblock %}
 
+{% block head %}
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({selector:'textarea'});</script>
+{% endblock %}
+
 {% block content %}
     <h1>{{u.username}}'s Profile</h1>
     <hr>
-    <!-- WIP -->
+    <!-- WIP:
+    Password Change
+    Profile Picture
+    Add Bio
+    Change name?
+    Show Comments / Classes / Lessons
+    -->
+    {% if errorList %}
+        <ul class="errorMessage">
+        {% for error in errorList %}
+            <li>{{error}}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if userSession['userid'] == u.userid %}
+        {% if u.bio == NULL %}
+            <h2>No Bio created</h2>
+            <form method="post" id="classForm">
+                <p><label for="body"><strong>Write your Bio:</strong></label></p>
+                <textarea name="body" cols="60" rows="10">{{u.bio}}</textarea>
+                <p><input type="submit" value="Upload Bio"></p>
+            </form>
+        {% else %}
+            <div class="class">{{u.bio|raw}}</div>
+        {% endif %}
+            <h2>Change Password:</h2>
+            <form method="post">
+                <label for="pass1">Current Password</label>
+                <br>
+                <input type="password" name="pass" placeholder="**********">
+                <br>
+                <label for="pass1">New Password</label>
+                <br>
+                <input type="password" name="pass1" placeholder="**********">
+                <br>
+                <label for="pass2">New Password (repeated)</label>
+                <br>
+                <input type="password" name="pass2" placeholder="**********">
+                <br>
+                <input type="submit" value="Change Password">
+            </form>
+    {% else %}
+        {% if u.bio == NULL %}
+            <h2>No Bio created</h2>
+        {% else %}
+            <div class="class">{{u.bio|raw}}</div>
+        {% endif %}
+    {% endif %}
 {% endblock %}

@@ -134,9 +134,9 @@ $app->get('/logout', function ($request, $response, $args) use ($log){
 
 
     //  PROFILE
-$app->get('/profile/{id:[0-9]+}', function ($request, $response, $args) {
+$app->map(['GET', 'POST'],'/profile/{id:[0-9]+}', function ($request, $response, $args) {
     // Fetch user, class, lessons, and comments
-    $profile = DB::queryFirstRow("SELECT u.userid, u.username, u.email, u.level FROM users as u WHERE u.userid = %d", $args['id']);
+    $profile = DB::queryFirstRow("SELECT u.userid, u.username, u.email, u.bio, u.level, u.password FROM users as u WHERE u.userid = %d", $args['id']);
     $classlist = DB::query("SELECT cl.classid, cl.classname, cl.userid, cl.level, cl.body FROM classes as cl WHERE cl.userid = %d ORDER BY cl.classid", $args['id']);
     $lessonlist = DB::query("SELECT l.lessonid, l.title, l.body, l.classid, l.userid, l.filepathid, l.date, l.level FROM lessons as l WHERE l.userid = %d ORDER BY l.lessonid", $args['id']);
     $commentlist = DB::query("SELECT co.commentid, co.userid, co.date, co.body FROM comments as co WHERE co.userid = %d ORDER BY co.commentid", $args['id']);
@@ -144,6 +144,51 @@ $app->get('/profile/{id:[0-9]+}', function ($request, $response, $args) {
         $response = $response->withStatus(404);
         return $this->view->render($response, 'article_not_found.html.twig'); //    FIXME: Change to profile_not_found.html.twig
     }
+        //  STATE 2&3: receiving submission
+    if ($profile['userid'] == $_SESSION['user']['id']) {
+        if ($profile['bio'] == NULL) {
+            $body = $request->getParam('body');
+            $body = strip_tags($body, "<p><ul><li><em><strong><i><b><ol><h3><h4><h5><span>");
+            $errorList = array();
+            if (strlen($body) < 2 || strlen($body) > 1000) {
+                array_push($errorList, "Bio must be 2-1000 characters long");
+                // keep the body even if invalid
+            }
+            if ($errorList) {
+                return $this->view->render($response, 'profile.html.twig',
+                        [ 'errorList' => $errorList, 'id' => $args['id']]);
+            } else {
+                DB::insertUpdate('users', ['userid' => $args['id'], 'bio' => $body]);
+                return $this->view->render($response, 'profile.html.twig',
+                        [ 'errorList' => $errorList, 'u' => $profile,'classes' => $classlist, 'lessons' => $lessonlist, 'comments' => $commentlist]);
+            }
+        }
+    }
+    //  CHANGE PASSWORD
+    $pass = $request->getParam('pass');
+    $pass1 = $request->getParam('pass1');
+    $pass2 = $request->getParam('pass2');
+    if ($pass == $profile['password']) {
+        if ($pass1 != $pass2) {
+            array_push($errorList, "Passwords do not match");
+        } else {
+            if ((strlen($pass1) < 6) || (strlen($pass1) > 16)
+                    || (preg_match("/[A-Z]/", $pass1) == FALSE )
+                    || (preg_match("/[a-z]/", $pass1) == FALSE )
+                    || (preg_match("/[0-9]/", $pass1) == FALSE )) {
+                array_push($errorList, "Password must be 6-16 characters long, "
+                    . "with at least one uppercase, one lowercase, and one digit in it");
+            }
+        }
+    } else {
+        array_push($errorList, "Current Password is incorrect");
+    }
+    if ($errorList) {
+        return $this->view->render($response, 'profile.html.twig',
+                [ 'errorList' => $errorList, 'u' => $profile,'classes' => $classlist, 'lessons' => $lessonlist, 'comments' => $commentlist]);
+    } else {
+        return $this->view->render($response, 'profile.html.twig', ['u' => $profile,'classes' => $classlist, 'lessons' => $lessonlist, 'comments' => $commentlist]);
+    }
     //  Return
-    return $this->view->render($response, 'profile.html.twig', ['u' => $profile, 'classes' => $classlist, 'lessons' => $lessonlist, 'comments' => $commentlist]);
+    return $this->view->render($response, 'profile.html.twig', ['u' => $profile,'classes' => $classlist, 'lessons' => $lessonlist, 'comments' => $commentlist]);
 });  

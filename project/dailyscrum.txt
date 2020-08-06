@@ -141,8 +141,10 @@ YYYY/MM/DD  - NAME
 
 2020/08/06 - HENRY
 1.	Profile page was created but not finalized // CSS overhaul
-2.	
-3.  
+2.	Profile Page completion
+    Updating database for bio and filepath (user)
+3.  Editing: Updating the page doesn't show the newly edited content
+    Create class redirects to another page with nothing on it. (addclass_success not loading properly)
 
 2020/08/06 - NORMAN
 1.	Lessons view page skeleton. Lessons on class page skeleton.
