@@ -25,9 +25,9 @@ $app->post('/create_class', function ($request, $response, $args) {
     //  Sanitize the Body:
     $body = strip_tags($body, "<p><ul><li><em><strong><i><b><ol><h3><h4><h5><span>");
     $errorList = array();
-    if (preg_match('/^[a-zA-Z0-9\ \\,\\._\'"-]{2,100}$/', $name) != 1) { // Reg check on classname
+    if (preg_match('/^[a-zA-Z0-9\ \\,\\?\\!\\._\'"-]{2,100}$/', $name) != 1) { // Reg check on classname
         array_push($errorList, "Class name must be 2-100 characters long and consist of letters, digits, "
-            . "spaces, dots, commas, underscores, apostrophies, or minus sign.");
+            . "spaces, dots, question marks, exclamation points, commas, underscores, apostrophies, or minus sign.");
         // keep the title even if invalid
     }
     if (strlen($body) < 2 || strlen($body) > 1000) {
