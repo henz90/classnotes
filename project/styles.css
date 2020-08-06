@@ -37,8 +37,7 @@ body {
     border-radius: 30px;
     width: 250px;
     position: sticky;
-    left: 0;
-    top: 0;
+    top: 5em;
     background-color: goldenrod;
     margin: 0.5em;
 }
