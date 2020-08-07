@@ -39,6 +39,16 @@
                     <textarea name="body" cols="60" rows="10">{{u.bio}}</textarea>
                     <p><input type="submit" value="Update Bio"></p>
                 </form>
+                <!-- ADD COMMENTS AND CLASSES -->
+            <h2>Lessons:</h2>
+            <div id="lessonaccordion">
+                {% for l in lessons %}
+                    <div class="lessonContainer">
+                        <a href="/lesson/{{l.lessonid}}"><h4>{{l.title}}</h4></a>
+                        <p>{{l.body|raw}}</p>
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}
             <h2>Change Password:</h2>
             <p>
@@ -64,5 +74,15 @@
         {% else %}
             <div class="class">{{u.bio|raw}}</div>
         {% endif %}
+        <!-- ADD COMMENTS AND CLASSES -->
+        <h2>Lessons:</h2>
+        <div id="lessonaccordion">
+            {% for l in lessons %}
+                <div class="lessonContainer">
+                    <a href="/lesson/{{l.lessonid}}"><h4>{{l.title}}</h4></a>
+                    <p>{{l.body|raw}}</p>
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
 {% endblock %}

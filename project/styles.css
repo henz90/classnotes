@@ -102,6 +102,12 @@ body {
     background-color: white;
 }
 
+.errorMessage {
+    text-shadow: 1px 1px 1px lightcoral;
+    border: 1px solid black;
+    background-color: white;
+}
+
 .lessonContainer {
     float: left;
     background: white;
@@ -155,9 +161,6 @@ p {
 /* 
 CSS for user-related forms 
 */
-.errorMessage {
-    padding-top: 2em;
-}
 
 .userForm {
     display: inline-block;
