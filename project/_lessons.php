@@ -42,7 +42,7 @@ $app->post('/create_lesson', function ($request, $response, $args) {
     }
     
     if ($errorList) {
-        //need to keep id in address bar or else it breaks on next submission.
+        //FIXME need to keep id in address bar or else it breaks on next submission.
         return $this->view->render($response, 'create_lesson.html.twig',
                 [ 'errorList' => $errorList, 'c' => ['title' => $title, 'body' => $body ]  ]);
     } else {
