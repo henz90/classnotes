@@ -5,7 +5,9 @@
 {% block content %}
     {% for c in list %}
     <div class="class">
+    <!--    FIXME: upvote
     <span class="upvote"></span>
+    -->
         <h2 class="title"><a href="/class/{{c.classid}}">{{c.classname}}</a></h2>
         <div class="name">Created by <a href="/profile/{{c.userid}}">{{c.username}}</a></div>
         <p>{{c.body|raw}}</p>
