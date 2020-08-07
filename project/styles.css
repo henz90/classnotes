@@ -134,6 +134,10 @@ body {
     height: 1.75em;
 }
 
+.centered {
+    text-align: center;
+}
+
 h1 {
     text-align:center;
 }
@@ -216,8 +220,6 @@ Lesson page CSS
 */
 
 /* https://www.w3schools.com/howto/howto_css_breadcrumbs.asp */
-
-/* Why is the style not being applied, i'm so confused */
 
 /* Style the list */
 ul.breadcrumb {

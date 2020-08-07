@@ -16,8 +16,9 @@ $app->get('/create_lesson', function ($request, $response, $args) {
 // Handling the redirect
 $app->get('/create_lesson/[{classid}]', function ($request, $response, $args) {
     $classid = isset($args['classid']) ? $args['classid'] : "";
-    $id = DB::queryFirstRow("SELECT classid FROM classes WHERE classid=%s", $classid);
-    return $this->view->render($response, 'create_lesson.html.twig', ['c' => $id]);
+    $class = DB::queryFirstRow("SELECT c.classid, c.classname, c.semester, c.year, c.userid, c.level, c.body, u.username "
+    . "FROM classes as c, users as u WHERE c.userid = u.userid AND c.classid = %d", $classid);
+    return $this->view->render($response, 'create_lesson.html.twig', ['c' => $class]);
 });
 
 $app->post('/create_lesson', function ($request, $response, $args) {
@@ -31,20 +32,28 @@ $app->post('/create_lesson', function ($request, $response, $args) {
     //  Sanitize the Body:
     $body = strip_tags($body, "<p><ul><li><em><strong><i><b><ol><h3><h4><h5><span>");
     $errorList = array();
-    if (preg_match('/^[a-zA-Z0-9\ \\._\'"-]{2,100}$/', $title) != 1) { // Reg check on classname
+    if (preg_match('/^[a-zA-Z0-9\ \\.?_\'"-]{2,100}$/', $title) != 1) { // Reg check on classname
         array_push($errorList, "Title must be 2-100 characters long and consist of letters, digits, "
-            . "spaces, dots, underscores, apostrophies, or minus sign.");
+            . "spaces, dots, underscores, apostrophies, question mark, or minus sign.");
         // keep the title even if invalid
     }
     if (strlen($body) < 2 || strlen($body) > 10000) {
         array_push($errorList, "Body must be 2-10000 characters long");
         // keep the body even if invalid
     }
-    
+
+    $class = DB::queryFirstRow("SELECT c.classid, c.classname, c.semester, c.year, c.userid, c.level, c.body, u.username "
+    . "FROM classes as c, users as u WHERE c.userid = u.userid AND c.classid = %d", $classid);
+
+    $fullBodyNoTags = strip_tags($class['body']);
+    $bodyPreview = substr(strip_tags($fullBodyNoTags), 0, 100);
+    $bodyPreview .= (strlen($fullBodyNoTags) > strlen($bodyPreview)) ? "..." : "";
+    $class['body'] = $bodyPreview;
+
     if ($errorList) {
         //FIXME need to keep id in address bar or else it breaks on next submission.
         return $this->view->render($response, 'create_lesson.html.twig',
-                [ 'errorList' => $errorList, 'c' => ['title' => $title, 'body' => $body ]  ]);
+                [ 'errorList' => $errorList, 'c' => $class, 'l' => ['title' => $title, 'body' => $body] ]);
     } else {
         $authorId = $_SESSION['user']['userid'];
         DB::insert('lessons', ['title' => $title, 'body' => $body, 'classid' => $classid, 'userid' => $authorId, 'level' => 0]);

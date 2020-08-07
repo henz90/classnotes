@@ -29,14 +29,25 @@
         </ul>
     {% endif %}
 
+
+    <h1 class="centered">{{c.classname}}</h1>
+        <hr>
+        <i>Posted by <a href="/profile/{{c.userid}}">{{c.username}}</a></i>
+        <hr>
+        <div class="body">{{c.body|raw}}</div>
+        <hr>
+    </h1>
+
+    <h2 class="centered">Add a lesson</h2>
+
     <form method="post" class="userForm" action="/create_lesson">
         <input type="hidden" name="classinputid" id="classinputid" value="{{c.classid}}">
 
         <label for="title">Lesson Name</label>
-        <input type="text" name="title" value="{{c.title}}" placeholder="Drying 101">
+        <input type="text" name="title" value="{{l.title}}" placeholder="Drying 101">
 
         <label for="body">Body</label>
-        <textarea name="body" cols="60" rows="10" value="{{c.body}}" placeholder="To dry is to go from grape to raisin"></textarea>
+        <textarea name="body" cols="60" rows="10" placeholder="To dry is to go from grape to raisin">{{l.body}}</textarea>
 
         <input type="submit" value="Add Lesson">
     </form>
