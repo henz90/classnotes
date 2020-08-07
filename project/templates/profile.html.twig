@@ -39,7 +39,38 @@
                     <textarea name="body" cols="60" rows="10">{{u.bio}}</textarea>
                     <p><input type="submit" value="Update Bio"></p>
                 </form>
+            <h2>Classes:</h2>
+            <div id="lessonaccordion">
+                {% for cl in classes %}
+                    <div class="lessonContainer">
+                        <a href="/class/{{cl.classid}}"><h4>{{cl.classname}}</h4></a>
+                        <p>{{cl.body|raw}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <br class="break">
+            <h2>Lessons:</h2>
+            <div id="lessonaccordion">
+                {% for l in lessons %}
+                    <div class="lessonContainer">
+                        <a href="/lesson/{{l.lessonid}}"><h4>{{l.title}}</h4></a>
+                        <p>{{l.body|raw}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <br class="break">
+            <h2>Comments:</h2>
+            <div id="lessonaccordion">
+                {% for co in comments %}
+                    <div class="lessonContainer">
+                        <a href="/lesson/{{l.lessonid}}"><h4>{{l.title}}</h4></a>
+                        <p>{{l.body|raw}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <br class="break">
         {% endif %}
+            <br class="break">
             <h2>Change Password:</h2>
             <p>
                 <form method="post">
@@ -64,5 +95,35 @@
         {% else %}
             <div class="class">{{u.bio|raw}}</div>
         {% endif %}
+            <h2>Classes:</h2>
+            <div id="lessonaccordion">
+                {% for cl in classes %}
+                    <div class="lessonContainer">
+                        <a href="/class/{{cl.classid}}"><h4>{{cl.classname}}</h4></a>
+                        <p>{{cl.body|raw}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <br class="break">
+            <h2>Lessons:</h2>
+            <div id="lessonaccordion">
+                {% for l in lessons %}
+                    <div class="lessonContainer">
+                        <a href="/lesson/{{l.lessonid}}"><h4>{{l.title}}</h4></a>
+                        <p>{{l.body|raw}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <br class="break">
+            <h2>Comments:</h2>
+            <div id="lessonaccordion">
+                {% for co in comments %}
+                    <div class="lessonContainer">
+                        <a href="/lesson/{{l.lessonid}}"><h4>{{l.title}}</h4></a>
+                        <p>{{l.body|raw}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <br class="break">
     {% endif %}
 {% endblock %}

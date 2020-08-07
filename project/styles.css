@@ -64,6 +64,10 @@ body {
     box-shadow: inset 0 0 2px black;
 }
 
+.break {
+    clear: both;
+}
+
 .body {
     border: 1px solid black;
     background-color: white;
@@ -99,6 +103,12 @@ body {
     border: 2px solid black;
     margin: 0.5em;
     padding: 0.5em;
+    background-color: white;
+}
+
+.errorMessage {
+    text-shadow: 1px 1px 1px lightcoral;
+    border: 1px solid black;
     background-color: white;
 }
 
@@ -159,9 +169,6 @@ p {
 /* 
 CSS for user-related forms 
 */
-.errorMessage {
-    padding-top: 2em;
-}
 
 .userForm {
     display: inline-block;
