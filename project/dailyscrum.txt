@@ -150,3 +150,14 @@ YYYY/MM/DD  - NAME
 1.	Lessons view page skeleton. Lessons on class page skeleton.
 2.  Styling the lessons-related pages to have proper display.
 3.	Scripting things, going to have to review JS/Jquery for lessons on the class page.
+
+2020/08/07 - HENRY
+1.	Profile work and CSS
+2.	Profile page completion
+3.  Editing: Updating the page doesn't show the newly edited content
+    Create class redirects to another page with nothing on it. (addclass_success not loading properly)
+
+2020/08/07 - NORMAN
+1.	
+2.  
+3.	
