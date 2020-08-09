@@ -34,13 +34,14 @@ $app->post('/create_class', function ($request, $response, $args) {
         array_push($errorList, "Body must be 2-1000 characters long");
         // keep the body even if invalid
     }
-    if($year < 1990 ) {
+    if($year < 1989 ) {
         array_push($errorList, "Year must be a positive number before 1990");
     }
     if ($errorList) {
         return $this->view->render($response, 'create_class.html.twig',
                 [ 'errorList' => $errorList, 'c' => ['classname' => $name, 'body' => $body ]  ]);
     } else {
+        //  FIXME: Something isn't working here, redirects to create_class instead...
         $authorId = $_SESSION['user']['userid'];
         DB::insert('classes', ['classname' => $name, 'semester' => $semester, 'year' => $year, 'userid' => $authorId, 'level' => 0, 'body' => $body]);
         $articleId = DB::insertId();
