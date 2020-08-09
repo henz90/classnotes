@@ -15,10 +15,11 @@ body {
     float: left;
     border: 1px solid black;
     border-radius: 30px;
-    width: 250px;
+    width: 14%;
     position: sticky;
     top: 0.5em;
     left: 1em;
+    margin-bottom: 2em;
     background-color: lightsteelblue;
     box-shadow: 0px 2px 2px black;
 }
@@ -40,16 +41,18 @@ body {
 }
 
 #menu > li:hover {
-    background-color: whitesmoke;
+    background-color: #C8FFFF;
 }
 
 #content {
+    float: right;
     border: 1px solid black;
     border-radius: 30px;
     background-color: lightsteelblue;
-    width: auto;
+    width: 82%;
     height: auto;
-    margin-left: 17.5em;
+    margin-left: auto;
+    margin-bottom: 1em;
     padding: 0.5em 1em 0.5em 1em;
     box-shadow: inset 0 0 2px black;
 }
@@ -58,7 +61,6 @@ body {
     clear: both;
     border: 1px solid black;
     border-radius: 30px;
-    margin-left: 17.5em;
     background-color: lightsteelblue;
     padding: 0.5em 0 0.5em 1em;
     box-shadow: inset 0 0 2px black;
@@ -85,7 +87,7 @@ body {
 }
 
 .class:hover {
-    background-color: whitesmoke;
+    background-color: #C8FFFF;
 }
 
 .comments {
@@ -133,6 +135,16 @@ body {
 .title {
     float: left;
     width: 25em;
+}
+
+.top5 {
+    float: left;
+    background: white;
+    border: 1px solid black;
+    box-shadow: 0px 2px 2px black;
+    padding: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 .upvote {

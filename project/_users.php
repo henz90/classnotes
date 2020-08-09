@@ -137,12 +137,18 @@ $app->get('/logout', function ($request, $response, $args) use ($log){
 $app->map(['GET', 'POST'],'/profile/{id:[0-9]+}', function ($request, $response, $args) {
     // Fetch user, class, lessons, and comments
     $profile = DB::queryFirstRow("SELECT u.userid, u.username, u.email, u.bio, u.level, u.password FROM users as u WHERE u.userid = %d", $args['id']);
-    $classList = DB::query("SELECT cl.classid, cl.classname, cl.userid, cl.level, cl.body FROM classes as cl WHERE cl.userid = %d ORDER BY cl.classid", $args['id']);
-    $lessonList = DB::query("SELECT l.lessonid, l.title, l.body, l.classid, l.userid, l.filepathid, l.date, l.level FROM lessons as l WHERE l.userid = %d ORDER BY l.lessonid", $args['id']);
-    $commentList = DB::query("SELECT co.commentid, co.userid, co.date, co.body FROM comments as co WHERE co.userid = %d ORDER BY co.commentid", $args['id']);
+    $classList = DB::query("SELECT cl.classid, cl.classname, cl.userid, cl.level, cl.body FROM classes as cl WHERE cl.userid = %d ORDER BY cl.level LIMIT 5", $args['id']);
+    $lessonList = DB::query("SELECT l.lessonid, l.title, l.body, l.classid, l.userid, l.filepathid, l.date, l.level FROM lessons as l WHERE l.userid = %d ORDER BY l.level LIMIT 5", $args['id']);
+    $commentList = DB::query("SELECT co.commentid, co.userid, co.date, co.body FROM comments as co WHERE co.userid = %d ORDER BY co.level LIMIT 5", $args['id']);
     foreach ($classList as &$article) {
         $fullBodyNoTags = strip_tags($article['body']);
-        $bodyPreview = substr(strip_tags($fullBodyNoTags), 0, 100);
+        $bodyPreview = substr(strip_tags($fullBodyNoTags), 0, 10);
+        $bodyPreview .= (strlen($fullBodyNoTags) > strlen($bodyPreview)) ? "..." : "";
+        $article['body'] = $bodyPreview;
+    }
+    foreach ($commentList as &$article) {
+        $fullBodyNoTags = strip_tags($article['body']);
+        $bodyPreview = substr(strip_tags($fullBodyNoTags), 0, 10);
         $bodyPreview .= (strlen($fullBodyNoTags) > strlen($bodyPreview)) ? "..." : "";
         $article['body'] = $bodyPreview;
     }
@@ -170,7 +176,7 @@ $app->map(['GET', 'POST'],'/profile/{id:[0-9]+}', function ($request, $response,
             }
         }
     }
-    //  CHANGE PASSWORD // FIXME: How do I make this work?
+    //  CHANGE PASSWORD
     $pass = $request->getParam('pass');
     $pass1 = $request->getParam('pass1');
     $pass2 = $request->getParam('pass2');
@@ -184,6 +190,9 @@ $app->map(['GET', 'POST'],'/profile/{id:[0-9]+}', function ($request, $response,
                     || (preg_match("/[0-9]/", $pass1) == FALSE )) {
                 array_push($errorList, "Password must be 6-16 characters long, "
                     . "with at least one uppercase, one lowercase, and one digit in it");
+            }
+            else {
+                DB::insertUpdate('users', ['userid' => $args['id'], 'password' => $pass1]);
             }
         }
     } else {

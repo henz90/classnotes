@@ -13,9 +13,7 @@
     <!-- WIP:
     Password Change
     Profile Picture
-    Add Bio
     Change name?
-    Show Comments / Classes / Lessons
     -->
     {% if errorList %}
         <ul class="errorMessage">
@@ -24,6 +22,7 @@
         {% endfor %}
         </ul>
     {% endif %}
+    <!-- USER is logged in to this account -->
     {% if userSession['userid'] == u.userid %}
         {% if u.bio == NULL %}
             <h2>No Bio created</h2>
@@ -39,36 +38,29 @@
                     <textarea name="body" cols="60" rows="10">{{u.bio}}</textarea>
                     <p><input type="submit" value="Update Bio"></p>
                 </form>
-            <h2>Classes:</h2>
-            <div id="lessonaccordion">
+            <h2>Top 5 Classes:</h2>
                 {% for cl in classes %}
-                    <div class="lessonContainer">
+                    <div class="top5">
                         <a href="/class/{{cl.classid}}"><h4>{{cl.classname}}</h4></a>
                         <p>{{cl.body|raw}}</p>
                     </div>
                 {% endfor %}
-            </div>
             <br class="break">
-            <h2>Lessons:</h2>
-            <div id="lessonaccordion">
+            <h2>Top 5 Lessons:</h2>
                 {% for l in lessons %}
-                    <div class="lessonContainer">
+                    <div class="top5">
                         <a href="/lesson/{{l.lessonid}}"><h4>{{l.title}}</h4></a>
                         <p>{{l.body|raw}}</p>
                     </div>
                 {% endfor %}
-            </div>
             <br class="break">
-            <h2>Comments:</h2>
-            <div id="lessonaccordion">
+            <h2>Top 5 Comments:</h2>
                 {% for co in comments %}
-                    <div class="lessonContainer">
-                        <a href="/lesson/{{l.lessonid}}"><h4>{{l.title}}</h4></a>
+                    <div class="top5">
+                        <a href="/lesson/{{l.lessonid}}"><h4>{{co.body|raw}}</h4></a>
                         <p>{{l.body|raw}}</p>
                     </div>
                 {% endfor %}
-            </div>
-            <br class="break">
         {% endif %}
             <br class="break">
             <h2>Change Password:</h2>
@@ -95,35 +87,27 @@
         {% else %}
             <div class="class">{{u.bio|raw}}</div>
         {% endif %}
-            <h2>Classes:</h2>
-            <div id="lessonaccordion">
+            <h2>Top 5 Classes:</h2>
                 {% for cl in classes %}
-                    <div class="lessonContainer">
+                    <div class="top5">
                         <a href="/class/{{cl.classid}}"><h4>{{cl.classname}}</h4></a>
                         <p>{{cl.body|raw}}</p>
                     </div>
                 {% endfor %}
-            </div>
             <br class="break">
-            <h2>Lessons:</h2>
-            <div id="lessonaccordion">
+            <h2>Top 5 Lessons:</h2>
                 {% for l in lessons %}
-                    <div class="lessonContainer">
+                    <div class="top5">
                         <a href="/lesson/{{l.lessonid}}"><h4>{{l.title}}</h4></a>
                         <p>{{l.body|raw}}</p>
                     </div>
                 {% endfor %}
-            </div>
             <br class="break">
-            <h2>Comments:</h2>
-            <div id="lessonaccordion">
+            <h2>Top 5 Comments:</h2>
                 {% for co in comments %}
-                    <div class="lessonContainer">
-                        <a href="/lesson/{{l.lessonid}}"><h4>{{l.title}}</h4></a>
-                        <p>{{l.body|raw}}</p>
+                    <div class="top5">
+                        <a href="/"><h4>{{co.body|raw}}</h4></a> <!--FIXME: Link to comment location -->
                     </div>
                 {% endfor %}
-            </div>
-            <br class="break">
     {% endif %}
 {% endblock %}
