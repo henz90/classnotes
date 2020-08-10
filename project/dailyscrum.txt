@@ -156,6 +156,7 @@ YYYY/MM/DD  - NAME
 2.	Profile page completion
 3.  Editing: Updating the page doesn't show the newly edited content
     Create class redirects to another page with nothing on it. (addclass_success not loading properly)
+    Change Password redirects but doesn't change password
 
 2020/08/07 - NORMAN
 1.	Nothing in particular. Appointment + family matters were done
