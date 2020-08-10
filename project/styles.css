@@ -113,13 +113,37 @@ body {
 }
 
 .lessonContainer {
-    float: left;
     background: white;
     border: 1px solid black;
     box-shadow: 0px 2px 2px black;
     padding: 0.5em;
     margin-left: 0.5em;
     margin-right: 0.5em;
+    display: block;
+    height: inherit;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    transition: flex-shrink 200ms ease 30ms,-webkit-flex 200ms ease 30ms,z-index 0ms linear 0ms;
+    z-index: 0;
+}
+
+.lessonContainer:hover {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+    transition: flex-shrink 200ms ease 30ms,-webkit-flex 200ms ease 30ms,z-index 0ms linear 200ms;
+    z-index: 1;
+}
+
+#lessonaccordion {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    overflow: hidden;
+    text-align: initial;
 }
 
 .name {
