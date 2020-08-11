@@ -10,11 +10,6 @@
 {% block content %}
     <h1>{{u.username}}'s Profile</h1>
     <hr>
-    <!-- WIP:
-    Password Change
-    Profile Picture
-    Change name?
-    -->
     {% if errorList %}
         <ul class="errorMessage">
         {% for error in errorList %}
@@ -106,7 +101,7 @@
             <h2>Top 5 Comments:</h2>
                 {% for co in comments %}
                     <div class="top5">
-                        <a href="/"><h4>{{co.body|raw}}</h4></a> <!--FIXME: Link to comment location -->
+                        <a href="/class/{{co.articleid}}"><h4>{{co.body|raw}}</h4></a>
                     </div>
                 {% endfor %}
     {% endif %}

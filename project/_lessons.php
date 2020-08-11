@@ -81,7 +81,7 @@ $app->get('/lesson/{lessonid:[0-9]+}', function ($request, $response, $args) {
     if (!$lessonid) { 
         //FIXME currently using article_not_found. Fix it later.
         $response = $response->withStatus(404);
-        return $this->view->render($response, 'article_not_found.html.twig'); 
+        return $this->view->render($response, 'lesson_not_found.html.twig'); 
     }
 
     $lesson = DB::queryFirstRow("SELECT lessonid, title, body, date FROM lessons WHERE lessonid=%d", $lessonid);
