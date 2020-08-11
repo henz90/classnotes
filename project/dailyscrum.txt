@@ -163,12 +163,12 @@ YYYY/MM/DD  - NAME
 2.  Styling/scripting the lessons-related pages to have proper display.
 3.	Heavy scripting, going to need to play around?
 
-2020/08/07 - HENRY
-1.	
-2.	
-3.  
+2020/08/08 - HENRY
+1.	Nothing
+2.	FIXME bugs
+3.  Can we convert stuff over to JSON?
 
-2020/08/07 - NORMAN
+2020/08/08 - NORMAN
 1.	
 2.  
 3.	
