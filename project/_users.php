@@ -139,7 +139,7 @@ $app->map(['GET', 'POST'],'/profile/{id:[0-9]+}', function ($request, $response,
     $profile = DB::queryFirstRow("SELECT u.userid, u.username, u.email, u.bio, u.level, u.password FROM users as u WHERE u.userid = %d", $args['id']);
     $classList = DB::query("SELECT cl.classid, cl.classname, cl.userid, cl.level, cl.body FROM classes as cl WHERE cl.userid = %d ORDER BY cl.level LIMIT 5", $args['id']);
     $lessonList = DB::query("SELECT l.lessonid, l.title, l.body, l.classid, l.userid, l.filepathid, l.date, l.level FROM lessons as l WHERE l.userid = %d ORDER BY l.level LIMIT 5", $args['id']);
-    $commentList = DB::query("SELECT co.commentid, co.articleid, co.userid, co.date, co.body FROM comments as co WHERE co.userid = %d, ORDER BY co.level LIMIT 5", $args['id']);
+    $commentList = DB::query("SELECT co.commentid, co.articleid, co.userid, co.date, co.body, co.level FROM comments as co WHERE co.userid = %d, ORDER BY co.level LIMIT 5", $args['id']);
     foreach ($classList as &$article) {
         $fullBodyNoTags = strip_tags($article['body']);
         $bodyPreview = substr(strip_tags($fullBodyNoTags), 0, 10);
