@@ -55,7 +55,7 @@ $app->map(['GET', 'POST'],'/class/{id:[0-9]+}', function ($request, $response, $
     $article = DB::queryFirstRow("SELECT cl.classid, cl.classname, cl.semester, cl.year, cl.userid, cl.level, cl.body, u.username "
             . "FROM classes as cl, users as u WHERE cl.userid = u.userid AND cl.classid = %d", $args['id']);
     
-    if (!$article) { // TODO: use Slim's default 404 page instead of our custom one
+    if (!$article) {
         $response = $response->withStatus(404);
         return $this->view->render($response, 'article_not_found.html.twig'); 
     }
